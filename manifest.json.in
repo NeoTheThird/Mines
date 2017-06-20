@@ -3,7 +3,7 @@
     "description": "Clear the minefield.",
     "title": "Mines",
     "hooks": {
-        "mines.neothethird": {
+        "mines": {
             "apparmor": "mines.neothethird.apparmor",
             "desktop":  "mines.neothethird.desktop"
         }
