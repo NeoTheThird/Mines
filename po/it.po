@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mines\n"
+"Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-11-20 21:20+1300\n"
 "PO-Revision-Date: 2016-05-09 21:24+0000\n"
