@@ -1,0 +1,14 @@
+{
+    "name": "mines.neothethird",
+    "description": "Clear the minefield.",
+    "title": "Mines",
+    "hooks": {
+        "mines.neothethird": {
+            "apparmor": "mines.neothethird.apparmor",
+            "desktop":  "mines.neothethird.desktop"
+        }
+    },
+    "version": "1.0",
+    "maintainer": "Jan Sprinz <neo@neothethird.de>",
+    "framework" : "ubuntu-sdk-15.04.6"
+}

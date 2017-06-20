@@ -1,0 +1,12 @@
+[Desktop Entry]
+# TRANSLATORS: Title of application
+Name=Mines
+# TRANSLATORS: Single line description of application
+Comment=Clear the minefield.
+# TRANSLATORS: Keywords used for finding this application
+Keywords=mines,minesweeper,mine,puzzle
+Exec=qmlscene qml/Main.qml
+Icon=assets/mines.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true

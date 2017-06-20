@@ -1,0 +1,139 @@
+# Dutch translation for mines
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the mines package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mines\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-11-20 21:20+1300\n"
+"PO-Revision-Date: 2016-06-05 11:30+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Language-Team: Dutch <nl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-01-29 05:11+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
+
+#. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
+#: main.qml:75
+msgid "Game in progress"
+msgstr "Bezig met een spel"
+
+#. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
+#: main.qml:77
+msgid "Are you sure you want to restart this game?"
+msgstr "Weet u zeker dat u dit spel wilt herstarten?"
+
+#. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
+#: main.qml:80
+msgid "Restart game"
+msgstr "Spel herstarten"
+
+#. TRANSLATORS: Button in new game dialog that cancels new game request
+#: main.qml:89
+msgid "Continue current game"
+msgstr "Doorgaan met huidig spel"
+
+#. TRANSLATORS: Title for dialog confirming if scores should be cleared
+#. TRANSLATORS: Button in clear scores dialog that clears scores
+#. TRANSLATORS: Action in high scores page that clears scores
+#: main.qml:100 main.qml:105 main.qml:215
+msgid "Clear scores"
+msgstr "Scores wissen"
+
+#. TRANSLATORS: Content for dialog confirming if scores should be cleared
+#: main.qml:102
+msgid "Existing scores will be deleted. This cannot be undone."
+msgstr ""
+"De bestaande scores zullen worden verwijderd; dit kan niet ongedaan worden "
+"gemaakt."
+
+#. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
+#: main.qml:114
+msgid "Keep existing scores"
+msgstr "Bestaande scores behouden"
+
+#. TRANSLATORS: Title of application
+#: main.qml:128 mines.desktop.in:4
+msgid "Mines"
+msgstr "Mijnenveger"
+
+#. TRANSLATORS: Action on main page that shows game instructions
+#. TRANSLATORS: Title of page with game instructions
+#: main.qml:133 main.qml:183
+msgid "How to Play"
+msgstr "Speluitleg"
+
+#. TRANSLATORS: Action on main page that shows settings dialog
+#. TRANSLATORS: Title of page showing settings
+#: main.qml:139 main.qml:226
+msgid "Settings"
+msgstr "Instellingen"
+
+#. TRANSLATORS: Action on main page that starts a new game
+#: main.qml:145
+msgid "New Game"
+msgstr "Nieuw spel"
+
+#. TRANSLATORS: Game instructions
+#: main.qml:192
+msgid ""
+"<p><i>Mines</i> is a puzzle game where the goal is to find the mines in a "
+"minefield</p><br/><p>The minefield is divided into a grid of squares. Touch "
+"a square to check if there is a mine there. If no mine is present the square "
+"will show the number of mines surrounding it. Use logic to determine a "
+"square that cannot contain a mine to check next. If you hit a mine it "
+"explodes and the game is over. You can flag where a mine is by touching and "
+"holding that square. <br/><p>Have fun!</p>"
+msgstr ""
+"<p><i>Mijnenveger</i> is een puzzelspel met als doel het vinden van mijnen "
+"in een mijnenveld.</p><br/><p>Het mijnenveld is opgedeeld in vierkante "
+"vakjes. Raak een vierkant aan om te zien of er een mijn onder ligt. Als er "
+"geen mijn is, dan zal het vierkant een cijfer krijgen. Het cijfer geeft aan "
+"hoeveel mijnen eromheen liggen. Gebruik uw eigen logica om een vierkant "
+"zonder mijn eronder te vinden. Als u een mijn raakt, dan zal deze ontploffen "
+"waarna het spel eindigt. U kunt een mijnlocatie labelen door het "
+"desbetreffende vierkant lang ingedrukt te houden. <br/><p>Veel plezier!!</p>"
+
+#. TRANSLATORS: Title of page showing high scores
+#: main.qml:209
+msgid "High Scores"
+msgstr "Topscores"
+
+#. TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
+#: main.qml:232
+msgid "Vibrate when placing flags"
+msgstr "Trillen bij het plaatsen van labels"
+
+#. TRANSLATORS: Label above setting to choose the minefield size
+#: main.qml:242
+msgid "Minefield size:"
+msgstr "Grootte van mijnenveld:"
+
+#. TRANSLATORS: Setting name for small minefield
+#: main.qml:249
+msgid "Small"
+msgstr "Klein"
+
+#. TRANSLATORS: Setting name for large minefield
+#: main.qml:252
+msgid "Large"
+msgstr "Groot"
+
+#. TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
+#: main.qml:258
+msgid "%width%×%height%, %nmines% mines"
+msgstr "%width%×%height%, %nmines% mijnen"
+
+#. TRANSLATORS: Single line description of application
+#: mines.desktop.in:6
+msgid "A puzzle game where the goal is to find the mines in a minefield"
+msgstr "Een puzzelspel met als doel het vinden van mijnen in een mijnenveld"
+
+#. TRANSLATORS: Keywords used for finding this application
+#: mines.desktop.in:8
+msgid "mines,minesweeper,mine,puzzle"
+msgstr "mijnen,mijnenveger,mijn,puzzel"

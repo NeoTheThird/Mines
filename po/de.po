@@ -1,0 +1,141 @@
+# German translation for mines
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the mines package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mines\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-11-20 21:20+1300\n"
+"PO-Revision-Date: 2017-02-11 23:54+0000\n"
+"Last-Translator: Christoph Rieder <rieder_christoph1@gmx.net>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-02-12 06:25+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
+
+#. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
+#: main.qml:75
+msgid "Game in progress"
+msgstr "Ein Spiel ist aktiv"
+
+#. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
+#: main.qml:77
+msgid "Are you sure you want to restart this game?"
+msgstr "Sind Sie sicher, dass Sie das Spiel neu starten möchten?"
+
+#. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
+#: main.qml:80
+msgid "Restart game"
+msgstr "Spiel neu starten"
+
+#. TRANSLATORS: Button in new game dialog that cancels new game request
+#: main.qml:89
+msgid "Continue current game"
+msgstr "Aktives Spiel fortsetzen"
+
+#. TRANSLATORS: Title for dialog confirming if scores should be cleared
+#. TRANSLATORS: Button in clear scores dialog that clears scores
+#. TRANSLATORS: Action in high scores page that clears scores
+#: main.qml:100 main.qml:105 main.qml:215
+msgid "Clear scores"
+msgstr "Spielstände löschen"
+
+#. TRANSLATORS: Content for dialog confirming if scores should be cleared
+#: main.qml:102
+msgid "Existing scores will be deleted. This cannot be undone."
+msgstr ""
+"Die aktuellen Spielstände werden gelöscht. Das kann nicht rückgängig gemacht "
+"werden."
+
+#. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
+#: main.qml:114
+msgid "Keep existing scores"
+msgstr "Aktuelle Spielstände behalten"
+
+#. TRANSLATORS: Title of application
+#: main.qml:128 mines.desktop.in:4
+msgid "Mines"
+msgstr "Minen"
+
+#. TRANSLATORS: Action on main page that shows game instructions
+#. TRANSLATORS: Title of page with game instructions
+#: main.qml:133 main.qml:183
+msgid "How to Play"
+msgstr "Spielanleitung"
+
+#. TRANSLATORS: Action on main page that shows settings dialog
+#. TRANSLATORS: Title of page showing settings
+#: main.qml:139 main.qml:226
+msgid "Settings"
+msgstr "Einstellungen"
+
+#. TRANSLATORS: Action on main page that starts a new game
+#: main.qml:145
+msgid "New Game"
+msgstr "Neues Spiel"
+
+#. TRANSLATORS: Game instructions
+#: main.qml:192
+msgid ""
+"<p><i>Mines</i> is a puzzle game where the goal is to find the mines in a "
+"minefield</p><br/><p>The minefield is divided into a grid of squares. Touch "
+"a square to check if there is a mine there. If no mine is present the square "
+"will show the number of mines surrounding it. Use logic to determine a "
+"square that cannot contain a mine to check next. If you hit a mine it "
+"explodes and the game is over. You can flag where a mine is by touching and "
+"holding that square. <br/><p>Have fun!</p>"
+msgstr ""
+"<p><i>Mines</i> ist ein Knobelspiel mit dem Ziel alle Minen auf dem "
+"Minenfeld zu finden</p><br/><p>Das Minenfeld ist in ein Netz aus Quadraten "
+"unterteilt. Berühre ein Quadrat um zu prüfen, ob darunter eine Mine ist. "
+"Sollte sich dort keine Mine befinden, zeigt das Quadrat die Anzahl der "
+"umliegenden Minen an. Ziehe logische Schlüsse, um das nächste Quadrat zu "
+"bestimmen, das keine Mine enthalten kann. Triffst du auf eine Mine, "
+"explodiert sie und das Spiel ist vorbei. Durch berühren und halten eines "
+"Kästchen kannst Du Minen markieren. <br/><p>Viel Spaß!</p>"
+
+#. TRANSLATORS: Title of page showing high scores
+#: main.qml:209
+msgid "High Scores"
+msgstr "Bestenliste"
+
+#. TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
+#: main.qml:232
+msgid "Vibrate when placing flags"
+msgstr "Vibrieren beim Fahnensetzen"
+
+#. TRANSLATORS: Label above setting to choose the minefield size
+#: main.qml:242
+msgid "Minefield size:"
+msgstr "Größe des Minenfelds"
+
+#. TRANSLATORS: Setting name for small minefield
+#: main.qml:249
+msgid "Small"
+msgstr "Klein"
+
+#. TRANSLATORS: Setting name for large minefield
+#: main.qml:252
+msgid "Large"
+msgstr "Groß"
+
+#. TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
+#: main.qml:258
+msgid "%width%×%height%, %nmines% mines"
+msgstr "%width%×%height%, %nmines% Minen"
+
+#. TRANSLATORS: Single line description of application
+#: mines.desktop.in:6
+msgid "A puzzle game where the goal is to find the mines in a minefield"
+msgstr ""
+"Ein Knobel-Spiel, bei dem die Minen in einem Minenfeld gefunden werden "
+"müssen."
+
+#. TRANSLATORS: Keywords used for finding this application
+#: mines.desktop.in:8
+msgid "mines,minesweeper,mine,puzzle"
+msgstr "mines,minesweeper,mine,puzzle"
