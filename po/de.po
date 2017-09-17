@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-17 20:25+0200\n"
-"PO-Revision-Date: 2017-09-17 20:29+0200\n"
+"PO-Revision-Date: 2017-09-17 21:24+0200\n"
 "Last-Translator: Christoph Rieder <rieder_christoph1@gmx.net>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
@@ -60,7 +60,7 @@ msgstr "Aktuelle Spielstände behalten"
 #. TRANSLATORS: Title of application
 #: ../qml/Main.qml:148 ../qml/Main.qml:224
 msgid "Mines"
-msgstr "Minen"
+msgstr "Mines"
 
 #. TRANSLATORS: Action on main page that shows game instructions
 #. TRANSLATORS: Title of page with game instructions
@@ -88,7 +88,7 @@ msgstr "Version: "
 msgid ""
 "Mines is a puzzle game where the goal is to find the mines in a minefield."
 msgstr ""
-"Minen ist ein Puzzle-Spiel mit dem Ziel, alle Minen in einem Minenfeld zu "
+"Mines ist ein Puzzle-Spiel mit dem Ziel, alle Minen in einem Minenfeld zu "
 "beseitigen."
 
 #. TRANSLATORS: Game instructions
@@ -119,26 +119,35 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
+"Dieses Programm ist freie Software: sie darf weitergegeben und/oder "
+"bearbeitet werden gemäß den Richtlinien der GNU General Public License wie "
+"sie von der Free Software Foundation veröffentlicht wurden. Entweder in der "
+"Version 3 oder in irgendeiner späteren Version. Dieses Programm wird "
+"verteilt in der Hoffnung, dass es hilfreich ist, aber OHNE JEGLICHE "
+"GARANTIE; auch ohne unterstellte Garantie für MARKTGÄNGIGKEIT oder "
+"TAUGLICHKEIT FÜR EINEN BESTIMMTEN ZWECK. Lesen Sie die <a href='https://www."
+"gnu.org/licenses/gpl-3.0.en.html'>GNU General Public License</a> für mehr "
+"Details."
 
 #: ../qml/Main.qml:280
 msgid "SOURCE"
-msgstr ""
+msgstr "QUELLCODE"
 
 #: ../qml/Main.qml:280
 msgid "ISSUES"
-msgstr ""
+msgstr "PROBLEME"
 
 #: ../qml/Main.qml:280
 msgid "DONATE"
-msgstr ""
+msgstr "SPENDEN"
 
 #: ../qml/Main.qml:290
 msgid "Copyright (c) 2015 Robert Ancell"
-msgstr ""
+msgstr "Copyright (c) 2015 Robert Ancell"
 
 #: ../qml/Main.qml:299
 msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
-msgstr ""
+msgstr "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
 
 #. TRANSLATORS: Title of page showing high scores
 #: ../qml/Main.qml:309
