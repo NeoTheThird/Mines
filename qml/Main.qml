@@ -38,26 +38,26 @@ MainView {
 
     property string version: "1.1"
 
-    width: units.gu (40)
-    height: units.gu (71)
+    width: units.gu(40)
+    height: units.gu(71)
 
-    function get_state_database () {
-        return LocalStorage.openDatabaseSync ("state", "1", "Mines State", 0)
+    function get_state_database() {
+        return LocalStorage.openDatabaseSync("state", "1", "Mines State", 0)
     }
 
-    function get_history_database () {
-        return LocalStorage.openDatabaseSync ("history", "1", "Mines History", 0)
+    function get_history_database() {
+        return LocalStorage.openDatabaseSync("history", "1", "Mines History", 0)
     }
 
     Component.onCompleted: {
-        get_state_database ().transaction (function (t) {
+        get_state_database().transaction(function(t) {
             try {
                 var r = t.executeSql('SELECT use_haptic, grid_width, grid_height, n_mines FROM Settings')
-                var item = r.rows.item (0)
+                var item = r.rows.item(0)
                 haptic_check.checked = item.use_haptic
-                for (var i = 0; i < size_selector.model.count; i++) {
-                    var s = size_selector.model.get (i)
-                    if (s.grid_width == item.grid_width &&
+                for(var i = 0; i < size_selector.model.count; i++) {
+                    var s = size_selector.model.get(i)
+                    if(s.grid_width == item.grid_width &&
                         s.grid_height == item.grid_height &&
                         s.n_mines == item.n_mines) {
                             size_selector.selectedIndex = i
@@ -65,26 +65,25 @@ MainView {
                         }
                     }
                 }
-                catch (e) {
+                catch(e) {
                 }
             })
-
-            reset_field ()
+            reset_field()
         }
 
-        function save_state () {
-            get_state_database ().transaction (function (t) {
-                var grid_options = size_selector.model.get (size_selector.selectedIndex)
+        function save_state() {
+            get_state_database().transaction(function(t) {
+                var grid_options = size_selector.model.get(size_selector.selectedIndex)
                 // The lock field is to ensure the INSERT will always replace this row instead of adding another
-                t.executeSql ("CREATE TABLE IF NOT EXISTS Settings(lock INTEGER, use_haptic BOOLEAN, grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, PRIMARY KEY (lock))")
-                t.executeSql ("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines])
+                t.executeSql("CREATE TABLE IF NOT EXISTS Settings(lock INTEGER, use_haptic BOOLEAN, grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, PRIMARY KEY (lock))")
+                t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines])
             })
         }
 
-        function reset_field ()
+        function reset_field()
         {
-            var grid_options = size_selector.model.get (size_selector.selectedIndex)
-            minefield.set_size (grid_options.grid_width, grid_options.grid_height, grid_options.n_mines)
+            var grid_options = size_selector.model.get(size_selector.selectedIndex)
+            minefield.set_size(grid_options.grid_width, grid_options.grid_height, grid_options.n_mines)
         }
 
         Component {
@@ -92,22 +91,22 @@ MainView {
             Dialog {
                 id: d
                 // TRANSLATORS: Title for dialog shown when starting a new game while one in progress
-                title: i18n.tr ("Game in progress")
+                title: i18n.tr("Game in progress")
                 // TRANSLATORS: Content for dialog shown when starting a new game while one in progress
-                text: i18n.tr ("Are you sure you want to restart this game?")
+                text: i18n.tr("Are you sure you want to restart this game?")
                 Button {
                     // TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
-                    text: i18n.tr ("Restart game")
+                    text: i18n.tr("Restart game")
                     color: UbuntuColors.red
                     onClicked: {
-                        reset_field ()
-                        PopupUtils.close (d)
+                        reset_field()
+                        PopupUtils.close(d)
                     }
                 }
                 Button {
                     // TRANSLATORS: Button in new game dialog that cancels new game request
-                    text: i18n.tr ("Continue current game")
-                    onClicked: PopupUtils.close (d)
+                    text: i18n.tr("Continue current game")
+                    onClicked: PopupUtils.close(d)
                 }
             }
         }
@@ -117,58 +116,58 @@ MainView {
             Dialog {
                 id: d
                 // TRANSLATORS: Title for dialog confirming if scores should be cleared
-                title: i18n.tr ("Clear scores")
+                title: i18n.tr("Clear scores")
                 // TRANSLATORS: Content for dialog confirming if scores should be cleared
-                text: i18n.tr ("Existing scores will be deleted. This cannot be undone.")
+                text: i18n.tr("Existing scores will be deleted. This cannot be undone.")
                 Button {
                     // TRANSLATORS: Button in clear scores dialog that clears scores
-                    text: i18n.tr ("Clear scores")
+                    text: i18n.tr("Clear scores")
                     color: UbuntuColors.red
                     onClicked: {
-                        table.clear_scores ()
-                        PopupUtils.close (d)
+                        table.clear_scores()
+                        PopupUtils.close(d)
                     }
                 }
                 Button {
                     // TRANSLATORS: Button in clear scores dialog that cancels clear scores request
-                    text: i18n.tr ("Keep existing scores")
-                    onClicked: PopupUtils.close (d)
+                    text: i18n.tr("Keep existing scores")
+                    onClicked: PopupUtils.close(d)
                 }
             }
         }
 
         PageStack {
             id: page_stack
-            Component.onCompleted: push (main_page)
+            Component.onCompleted: push(main_page)
 
             Page {
                 id: main_page
                 visible: false
                 // TRANSLATORS: Title of application
-                title: i18n.tr ("Mines")
+                title: i18n.tr("Mines")
                 head.actions:
                 [
                 Action {
                     // TRANSLATORS: Action on main page that shows game instructions
-                    text: i18n.tr ("How to Play")
+                    text: i18n.tr("How to Play")
                     iconName: "help"
-                    onTriggered: page_stack.push (how_to_play_page)
+                    onTriggered: page_stack.push(how_to_play_page)
                 },
                 Action {
                     // TRANSLATORS: Action on main page that shows settings dialog
-                    text: i18n.tr ("Settings")
+                    text: i18n.tr("Settings")
                     iconName: "settings"
-                    onTriggered: page_stack.push (settings_page)
+                    onTriggered: page_stack.push(settings_page)
                 },
                 Action {
                     // TRANSLATORS: Action on main page that starts a new game
-                    text: i18n.tr ("New Game")
+                    text: i18n.tr("New Game")
                     iconName: "reload"
                     onTriggered: {
-                        if (minefield.started && !minefield.completed)
-                        PopupUtils.open (confirm_new_game_dialog)
+                        if(minefield.started && !minefield.completed)
+                        PopupUtils.open(confirm_new_game_dialog)
                         else
-                        reset_field ()
+                        reset_field()
                     }
                 }
                 ]
@@ -176,17 +175,17 @@ MainView {
                 MinefieldModel {
                     id: minefield
                     onSolved: {
-                        get_history_database ().transaction (function (t) {
-                            t.executeSql ("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
+                        get_history_database().transaction(function(t) {
+                            t.executeSql("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
                             var duration = minefield.end_time - minefield.start_time
-                            t.executeSql ("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString (), duration])
+                            t.executeSql("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString(), duration])
                         })
                     }
                 }
 
                 Item {
                     anchors.fill: parent
-                    anchors.margins: units.gu (2)
+                    anchors.margins: units.gu(2)
                     MinefieldView {
                         model: minefield
                         anchors.horizontalCenter: parent.horizontalCenter
@@ -200,7 +199,7 @@ MainView {
                 id: how_to_play_page
                 visible: false
                 // TRANSLATORS: Title of page with game instructions
-                title: i18n.tr ("How to Play")
+                title: i18n.tr("How to Play")
                 Flickable {
                     id: flick
                     anchors {
@@ -306,15 +305,15 @@ MainView {
                 id: scores_page
                 visible: false
                 // TRANSLATORS: Title of page showing high scores
-                title: i18n.tr ("High Scores")
+                title: i18n.tr("High Scores")
 
                 head.actions:
                 [
                 Action {
                     // TRANSLATORS: Action in high scores page that clears scores
-                    text: i18n.tr ("Clear scores")
+                    text: i18n.tr("Clear scores")
                     iconName: "reset"
-                    onTriggered: PopupUtils.open (confirm_clear_scores_dialog)
+                    onTriggered: PopupUtils.open(confirm_clear_scores_dialog)
                 }
                 ]
             }
@@ -323,44 +322,44 @@ MainView {
                 id: settings_page
                 visible: false
                 // TRANSLATORS: Title of page showing settings
-                title: i18n.tr ("Settings")
+                title: i18n.tr("Settings")
 
                 Column {
                     anchors.fill: parent
                     ListItem.Standard {
                         // TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
-                        text: i18n.tr ("Vibrate when placing flags")
+                        text: i18n.tr("Vibrate when placing flags")
                         control: CheckBox {
                             id: haptic_check
                             checked: true
-                            onCheckedChanged: save_state ()
+                            onCheckedChanged: save_state()
                         }
                     }
                     ListItem.ItemSelector {
                         id: size_selector
                         // TRANSLATORS: Label above setting to choose the minefield size
-                        text: i18n.tr ("Minefield size:")
+                        text: i18n.tr("Minefield size:")
                         model: field_size_model
                         delegate: OptionSelectorDelegate {
                             text: {
-                                switch (name) {
+                                switch(name) {
                                 case "small":
                                     // TRANSLATORS: Setting name for small minefield
-                                    return i18n.tr ("Small")
+                                    return i18n.tr("Small")
                                 case "large":
                                     // TRANSLATORS: Setting name for large minefield
-                                    return i18n.tr ("Large")
+                                    return i18n.tr("Large")
                                 default:
                                     return ""
                                 }
                             }
                             // TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
-                            subText: i18n.tr ("%width%×%height%, %nmines% mines").replace ("%width%", grid_width).replace ("%height%", grid_height).replace ("%nmines%", n_mines)
+                            subText: i18n.tr("%width%×%height%, %nmines% mines").replace("%width%", grid_width).replace("%height%", grid_height).replace("%nmines%", n_mines)
                         }
                         onSelectedIndexChanged: {
-                            save_state ()
-                            if (!minefield.started || minefield.completed)
-                            reset_field ()
+                            save_state()
+                            if(!minefield.started || minefield.completed)
+                            reset_field()
                         }
                     }
                 }

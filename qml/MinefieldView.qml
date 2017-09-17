@@ -1,8 +1,8 @@
 /*
 * Main.qml
 *
-* Copyright (C) 2015 Robert Ancell
-* Copyright (C) 2017 Jan Sprinz aka. NeoTheThird <neo@neothethird.de>
+* Copyright(C) 2015 Robert Ancell
+* Copyright(C) 2017 Jan Sprinz aka. NeoTheThird <neo@neothethird.de>
 * This file is part of Mines: Clear the minefield. <neothethird.de/mines/>
 *
 * This game is a fork of Robert Ancell's original work, which was inspired by
@@ -44,7 +44,7 @@ Grid {
     property bool landscape: parent.width > parent.height
     property int n_horizontal: landscape ? rows : columns
     property int n_vertical: landscape ? columns : rows
-    property int cell_size: Math.floor (Math.min (parent.width / n_horizontal, parent.height / n_vertical))
+    property int cell_size: Math.floor(Math.min(parent.width / n_horizontal, parent.height / n_vertical))
     property bool use_haptic_feedback: true
     Repeater {
         id: repeater
@@ -61,13 +61,13 @@ Grid {
                 anchors.centerIn: parent
                 sourceSize.width: parent.width * 0.6
                 source: {
-                    if (checked && has_mine)
+                    if(checked && has_mine)
                         return "../assets/exploded.svg"
-                    else if (grid.model.completed && has_mine)
+                    else if(grid.model.completed && has_mine)
                         return "../assets/mine.svg"
-                    else if (checked && n_surrounding > 0)
+                    else if(checked && n_surrounding > 0)
                         return "../assets/" + n_surrounding + "mines.svg"
-                    else if (flagged)
+                    else if(flagged)
                         return "../assets/flag.svg"
                     else
                         return ""
@@ -78,14 +78,14 @@ Grid {
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
                 enabled: !grid.model.completed
                 onClicked: {
-                    if (mouse.button == Qt.LeftButton)
-                        grid.model.check (column, row)
+                    if(mouse.button == Qt.LeftButton)
+                        grid.model.check(column, row)
                     else
-                        grid.model.flag (column, row)
+                        grid.model.flag(column, row)
                 }
                 onPressAndHold: {
-                    if (grid.model.flag (column, row) && use_haptic_feedback)
-                        place_flag_effect.start ()
+                    if(grid.model.flag(column, row) && use_haptic_feedback)
+                        place_flag_effect.start()
                 }
             }
         }
