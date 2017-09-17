@@ -61,16 +61,17 @@ Grid {
                 anchors.centerIn: parent
                 sourceSize.width: parent.width * 0.6
                 source: {
-                    if(checked && has_mine)
+                    if(checked && has_mine) {
                         return "../assets/exploded.svg"
-                    else if(grid.model.completed && has_mine)
+                    } else if(grid.model.completed && has_mine) {
                         return "../assets/mine.svg"
-                    else if(checked && n_surrounding > 0)
+                    } else if(checked && n_surrounding > 0) {
                         return "../assets/" + n_surrounding + "mines.svg"
-                    else if(flagged)
+                    } else if(flagged) {
                         return "../assets/flag.svg"
-                    else
+                    } else {
                         return ""
+                    }
                 }
             }
             MouseArea {
@@ -78,14 +79,16 @@ Grid {
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
                 enabled: !grid.model.completed
                 onClicked: {
-                    if(mouse.button == Qt.LeftButton)
+                    if(mouse.button == Qt.LeftButton) {
                         grid.model.check(column, row)
-                    else
+                    } else {
                         grid.model.flag(column, row)
+                    }
                 }
                 onPressAndHold: {
-                    if(grid.model.flag(column, row) && use_haptic_feedback)
+                    if(grid.model.flag(column, row) && use_haptic_feedback) {
                         place_flag_effect.start()
+                    }
                 }
             }
         }

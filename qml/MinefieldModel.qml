@@ -46,24 +46,32 @@ ListModel {
         n_mines = n
         completed = false
         clear()
-        for(var row = 0; row < n_rows; row++)
-            for(var column = 0; column < n_columns; column++)
-                append({"row": row, "column": column, "has_mine": false, "flagged": false, "checked": false, "n_surrounding": 0})
+        for(var row = 0; row < n_rows; row++) {
+            for(var column = 0; column < n_columns; column++) {
+                append({
+                    "row": row,
+                    "column": column,
+                    "has_mine": false,
+                    "flagged": false,
+                    "checked": false,
+                    "n_surrounding": 0
+                })
+            }
+        }
     }
 
     function get_cell(column, row) {
-        if(column < 0 || column >= columns || row < 0 || row > rows)
-            return undefined
-        return get(row * columns + column)
+        if(column < 0 || column >= columns || row < 0 || row > rows) { return undefined }
+        return get_index(row * columns + column)
     }
 
     function flag(column, row) {
         var cell = get_cell(column, row)
 
         // Can only flag unknown cells
-        if(cell.checked)
-            return false
+        if(cell.checked) { return false }
 
+        // toggle flag status
         cell.flagged = !cell.flagged
 
         return true
@@ -73,12 +81,10 @@ ListModel {
         var cell = get_cell(column, row)
 
         // Must unflag before checking
-        if(cell.flagged)
-            return
+        if(cell.flagged) { return }
 
         // Lay out board on first touch ensuring a mine is not at the current location
-        if(!started)
-            place_mines(column, row)
+        if(!started) { place_mines(column, row) }
 
         if(!cell.checked) {
             cell.checked = true
@@ -88,32 +94,28 @@ ListModel {
         function n_surrounding_flagged(column, row) {
             function flagged_count(column, row) {
                 var c = get_cell(column, row)
-                if(c == undefined)
-                    return 0
+                if(c == undefined) { return 0 }
                 return c.flagged ? 1 : 0
             }
             return flagged_count(column - 1, row - 1) +
-                   flagged_count(column, row - 1) +
-                   flagged_count(column + 1, row - 1) +
-                   flagged_count(column - 1, row) +
-                   flagged_count(column + 1, row) +
-                   flagged_count(column - 1, row + 1) +
-                   flagged_count(column, row + 1) +
-                   flagged_count(column + 1, row + 1)
+            flagged_count(column, row - 1) +
+            flagged_count(column + 1, row - 1) +
+            flagged_count(column - 1, row) +
+            flagged_count(column + 1, row) +
+            flagged_count(column - 1, row + 1) +
+            flagged_count(column, row + 1) +
+            flagged_count(column + 1, row + 1)
         }
 
-        if(cell.has_mine)
+        if(cell.has_mine) {
             completed = true
-        else {
+        } else {
             var n_flagged_mines = n_surrounding_flagged(cell.column, cell.row)
             if(cell.n_surrounding <= n_flagged_mines) {
                 // Automatically check surrounding cells
                 function auto_check(column, row) {
                     var cell = get_cell(column, row)
-                    if(cell == undefined)
-                        return
-                    if(cell.checked)
-                        return
+                    if(cell == undefined || cell.checked) { return }
                     check(column, row)
                 }
                 auto_check(cell.column - 1, cell.row - 1)
@@ -140,38 +142,41 @@ ListModel {
         started = true
         function place_mine(skip_index) {
             while(true) {
-                var index = Math.floor(Math.random() *(columns * rows))
-                if(index == skip_index)
-                    continue
-                var cell = get(index)
+                var index = Math.floor(Math.random() * (columns * rows))
+                if(index == skip_index) { continue }
+                var cell = get_index(index)
                 if(!cell.has_mine) {
                     cell.has_mine = true
                     return
                 }
             }
-       }
-       for(var i = 0; i < n_mines; i++)
-           place_mine(skip_row * columns + skip_column)
+        }
 
-       function n_surrounding(column, row)
-       {
-           function mc(column, row) {
-               var cell = get_cell(column, row)
-               if(cell == undefined)
-                   return 0
-               return cell.has_mine ? 1 : 0
-           }
-           return mc(column - 1, row - 1) +
-                  mc(column, row - 1) +
-                  mc(column + 1, row - 1) +
-                  mc(column - 1, row) +
-                  mc(column + 1, row) +
-                  mc(column - 1, row + 1) +
-                  mc(column, row + 1) +
-                  mc(column + 1, row + 1)
-       }
-       for(var column = 0; column < columns; column++)
-           for(var row = 0; row < rows; row++)
-               get_cell(column, row).n_surrounding = n_surrounding(column, row)
+        for(var i = 0; i < n_mines; i++) {
+            place_mine(skip_row * columns + skip_column)
+        }
+
+        function n_surrounding(column, row)
+        {
+            function mc(column, row) {
+                var cell = get_cell(column, row)
+                if(cell == undefined)
+                return 0
+                return cell.has_mine ? 1 : 0
+            }
+            return mc(column - 1, row - 1) +
+            mc(column, row - 1) +
+            mc(column + 1, row - 1) +
+            mc(column - 1, row) +
+            mc(column + 1, row) +
+            mc(column - 1, row + 1) +
+            mc(column, row + 1) +
+            mc(column + 1, row + 1)
+        }
+        for(var column = 0; column < columns; column++) {
+            for(var row = 0; row < rows; row++) {
+                get_cell(column, row).n_surrounding = n_surrounding(column, row)
+            }
+        }
     }
 }
