@@ -57,7 +57,7 @@ msgstr "Оставить существующие очки"
 #. TRANSLATORS: Title of application
 #: main.qml:128 mines.desktop.in:4
 msgid "Mines"
-msgstr "Мины"
+msgstr "Сапёр"
 
 #. TRANSLATORS: Action on main page that shows game instructions
 #. TRANSLATORS: Title of page with game instructions
@@ -79,13 +79,13 @@ msgstr "Новая Игра"
 #. TRANSLATORS: Game instructions
 #: main.qml:192
 msgid ""
-"<p><i>Mines</i> is a puzzle game where the goal is to find the mines in a "
-"minefield</p><br/><p>The minefield is divided into a grid of squares. Touch "
-"a square to check if there is a mine there. If no mine is present the square "
-"will show the number of mines surrounding it. Use logic to determine a "
-"square that cannot contain a mine to check next. If you hit a mine it "
-"explodes and the game is over. You can flag where a mine is by touching and "
-"holding that square. <br/><p>Have fun!</p>"
+"<p><i>Сапёр</i> - игра-головоломка, в которой нужно найти все заряды на "
+"минном поле</p><br/><p>Минное поле представляет из себя сетку квадратов. "
+"Нажмите на квадрат, чтобы проверить, есть ли там мина. Если нет, то квадрат "
+"покажет количество мин вокруг него. Используйте логику, чтобы вычислить "
+"следующий квадрат, в котором не может быть заряда. Если вы попались на "
+"мину, то она взрывается, и игра заканчивается. Вы можете пометить мину, "
+"долго зажав необходимый квадрат. <br/><p>Веселитесь!</p>"
 msgstr ""
 
 #. TRANSLATORS: Title of page showing high scores
@@ -121,9 +121,9 @@ msgstr "%width%×%height%, %nmines% мин"
 #. TRANSLATORS: Single line description of application
 #: mines.desktop.in:6
 msgid "A puzzle game where the goal is to find the mines in a minefield"
-msgstr "Игра в которой нужно найти все мины, на поле."
+msgstr "Игра, в которой нужно найти все заряды на минном поле"
 
 #. TRANSLATORS: Keywords used for finding this application
 #: mines.desktop.in:8
 msgid "mines,minesweeper,mine,puzzle"
-msgstr "мины, миннёр"
+msgstr "мины, миннёр, сапёр"
