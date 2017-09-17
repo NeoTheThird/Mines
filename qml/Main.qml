@@ -277,7 +277,7 @@ MainView {
                             linkColor: UbuntuColors.orange
                             horizontalAlignment: Text.AlignHCenter
                             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                            text: i18n.tr("<a href='https://github.com/NeoTheThird/Mines'>SOURCE</a> | <a href='https://github.com/NeoTheThird/Mines/issues'>ISSUES</a> | <a href='https://www.paypal.me/neothethird'>DONATE</a>")
+                            text: "<a href='https://github.com/NeoTheThird/Mines'>" + i18n.tr("SOURCE") + "</a> | <a href='https://github.com/NeoTheThird/Mines/issues'>" + i18n.tr("ISSUES") + "</a> | <a href='https://paypal.me/neothethird'>" + i18n.tr("DONATE") + "</a>"
                             onLinkActivated: Qt.openUrlExternally(link)
                         }
 

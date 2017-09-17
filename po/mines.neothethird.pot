@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-20 20:00+0000\n"
+"POT-Creation-Date: 2017-09-17 18:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,10 +110,15 @@ msgid ""
 msgstr ""
 
 #: ../qml/Main.qml:280
-msgid ""
-"<a href='https://github.com/NeoTheThird/Mines'>SOURCE</a> | <a href='https://"
-"github.com/NeoTheThird/Mines/issues'>ISSUES</a> | <a href='https://www."
-"paypal.me/neothethird'>DONATE</a>"
+msgid "SOURCE"
+msgstr ""
+
+#: ../qml/Main.qml:280
+msgid "ISSUES"
+msgstr ""
+
+#: ../qml/Main.qml:280
+msgid "DONATE"
 msgstr ""
 
 #: ../qml/Main.qml:290
