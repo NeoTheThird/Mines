@@ -79,13 +79,14 @@ msgstr "Новая Игра"
 
 #: ../qml/Main.qml:242
 msgid "Version: "
-msgstr ""
+msgstr "Версия: "
 
 #. TRANSLATORS: Short description
 #: ../qml/Main.qml:251
 msgid ""
 "Mines is a puzzle game where the goal is to find the mines in a minefield."
 msgstr ""
+"Сапёр - головоломка, в которой цель - найти все заряды на минном поле"
 
 #. TRANSLATORS: Game instructions
 #: ../qml/Main.qml:261
@@ -109,26 +110,37 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
+"Эта программа является свободным программным обеспечением: "
+"Вы можете распространять ее и (или) изменять, соблюдая условия "
+"Генеральной публичной лицензии GNU, опубликованной Фондом "
+"свободного программного обеспечения; либо редакции 3 Лицензии, "
+"либо (на Ваше усмотрение) любой редакции, выпущенной позже. "
+"Эта программа распространяется в расчете на то, что она окажется "
+"полезной, но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, включая подразумеваемую "
+"гарантию КАЧЕСТВА либо ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННЫХ ЦЕЛЕЙ. "
+"Ознакомьтесь с <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'> "
+"Генеральной публичной лицензией GNU</a> для полученияболее "
+"подробной информации."
 
 #: ../qml/Main.qml:280
 msgid "SOURCE"
-msgstr ""
+msgstr "ИСХОДНЫЙ КОД"
 
 #: ../qml/Main.qml:280
 msgid "ISSUES"
-msgstr ""
+msgstr "ТРЕКЕР ЗАДАЧ"
 
 #: ../qml/Main.qml:280
 msgid "DONATE"
-msgstr ""
+msgstr "ПОЖЕРТВОВАТЬ"
 
 #: ../qml/Main.qml:290
 msgid "Copyright (c) 2015 Robert Ancell"
-msgstr ""
+msgstr "Copyright (c) 2015 Robert Ancell"
 
 #: ../qml/Main.qml:299
 msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
-msgstr ""
+msgstr "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
 
 #. TRANSLATORS: Title of page showing high scores
 #: ../qml/Main.qml:309
