@@ -54,7 +54,7 @@ Grid {
             height: grid.cell_size
             color: checked ? "#CCCCFF" : "#AAAAFF"
             border.width: 1
-            border.color: checked ? color: "#4040FF"
+            border.color: checked ? color : "#4040FF"
             rotation: grid.landscape ? -90 : 0
             Image {
                 id: image

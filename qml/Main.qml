@@ -108,31 +108,31 @@ MainView {
             }
         }
     }
-
-    Component {
-        id: confirm_clear_scores_dialog
-        Dialog {
-            id: d
-            // TRANSLATORS: Title for dialog confirming if scores should be cleared
-            title: i18n.tr("Clear scores")
-            // TRANSLATORS: Content for dialog confirming if scores should be cleared
-            text: i18n.tr("Existing scores will be deleted. This cannot be undone.")
-            Button {
-                // TRANSLATORS: Button in clear scores dialog that clears scores
-                text: i18n.tr("Clear scores")
-                color: UbuntuColors.red
-                onClicked: {
-                    table.clear_scores()
-                    PopupUtils.close(d)
-                }
-            }
-            Button {
-                // TRANSLATORS: Button in clear scores dialog that cancels clear scores request
-                text: i18n.tr("Keep existing scores")
-                onClicked: PopupUtils.close(d)
-            }
-        }
-    }
+    // NOT USED FOR NOW
+    // Component {
+    //     id: confirm_clear_scores_dialog
+    //     Dialog {
+    //         id: d
+    //         // TRANSLATORS: Title for dialog confirming if scores should be cleared
+    //         title: i18n.tr("Clear scores")
+    //         // TRANSLATORS: Content for dialog confirming if scores should be cleared
+    //         text: i18n.tr("Existing scores will be deleted. This cannot be undone.")
+    //         Button {
+    //             // TRANSLATORS: Button in clear scores dialog that clears scores
+    //             text: i18n.tr("Clear scores")
+    //             color: UbuntuColors.red
+    //             onClicked: {
+    //                 table.clear_scores()
+    //                 PopupUtils.close(d)
+    //             }
+    //         }
+    //         Button {
+    //             // TRANSLATORS: Button in clear scores dialog that cancels clear scores request
+    //             text: i18n.tr("Keep existing scores")
+    //             onClicked: PopupUtils.close(d)
+    //         }
+    //     }
+    // }
 
     PageStack {
         id: page_stack
@@ -141,34 +141,37 @@ MainView {
         Page {
             id: main_page
             visible: false
-            // TRANSLATORS: Title of application
-            title: i18n.tr("Mines")
-            head.actions:
-            [
-            Action {
-                // TRANSLATORS: Action on main page that shows game instructions
-                text: i18n.tr("How to Play")
-                iconName: "help"
-                onTriggered: page_stack.push(how_to_play_page)
-            },
-            Action {
-                // TRANSLATORS: Action on main page that shows settings dialog
-                text: i18n.tr("Settings")
-                iconName: "settings"
-                onTriggered: page_stack.push(settings_page)
-            },
-            Action {
-                // TRANSLATORS: Action on main page that starts a new game
-                text: i18n.tr("New Game")
-                iconName: "reload"
-                onTriggered: {
-                    if(minefield.started && !minefield.completed)
-                    PopupUtils.open(confirm_new_game_dialog)
-                    else
-                    reset_field()
-                }
+            header: PageHeader {
+                id: mainPageHeader
+                // TRANSLATORS: Title of application
+                title:  i18n.tr("Mines")
+                trailingActionBar.actions: [
+                    Action {
+                        // TRANSLATORS: Action on main page that shows game instructions
+                        text: i18n.tr("How to Play")
+                        iconName: "help"
+                        onTriggered: page_stack.push(Qt.resolvedUrl("PageHowTo.qml"))
+                    },
+                    Action {
+                        // TRANSLATORS: Action on main page that shows settings dialog
+                        text: i18n.tr("Settings")
+                        iconName: "settings"
+                        //onTriggered: page_stack.push(Qt.resolvedUrl("PageSettings.qml"))
+                        onTriggered: page_stack.push(settings_page)
+                    },
+                    Action {
+                        // TRANSLATORS: Action on main page that starts a new game
+                        text: i18n.tr("New Game")
+                        iconName: "reload"
+                        onTriggered: {
+                            if(minefield.started && !minefield.completed)
+                            PopupUtils.open(confirm_new_game_dialog)
+                            else
+                            reset_field()
+                        }
+                    }
+                ]
             }
-            ]
 
             MinefieldModel {
                 id: minefield
@@ -182,7 +185,12 @@ MainView {
             }
 
             Item {
-                anchors.fill: parent
+                //anchors.fill: parent
+                width: parent.width
+                anchors {
+                    top: mainPageHeader.bottom
+                    bottom: statusBar.top
+                }
                 anchors.margins: units.gu(2)
                 MinefieldView {
                     model: minefield
@@ -191,139 +199,47 @@ MainView {
                     use_haptic_feedback: haptic_check.checked
                 }
             }
-        }
 
-        Page {
-            id: how_to_play_page
-            visible: false
-            // TRANSLATORS: Title of page with game instructions
-            title: i18n.tr("How to Play")
-            Flickable {
-                id: flick
-                anchors {
-                    fill: parent
-                    margins: units.gu(3)
-                    topMargin: 0
-                    bottomMargin: 0
+            Rectangle {
+              id: statusBar
+              width: parent.width
+              height: units.gu(20)
+              anchors.bottom: parent.bottom
+              Image {
+                  id: clockIcon
+                  anchors { left:left.parent; verticalCenter: parent.verticalCenter}
+                  source: "../assets/time.svg"
+              }
+
+              Item {
+                Timer {
+                    interval: 500; running: true; repeat: true
+                    //onTriggered: time.text = Date()
+                    onTriggered: time.text = minefield.update_time_elapsed()
                 }
-                clip: true
-                contentWidth: aboutColumn.width
-                contentHeight: aboutColumn.height
-
-                Column {
-                    id: aboutColumn
-                    width: parent.parent.width
-                    spacing: units.gu(3)
-
-                    Label {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        text: i18n.tr("Mines")
-                        fontSize: "x-large"
-                    }
-
-                    UbuntuShape {
-                        width: units.gu(12); height: units.gu(12)
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        radius: "medium"
-                        image: Image {
-                            source: Qt.resolvedUrl("../assets/mines.png")
-                        }
-                    }
-
-                    Label {
-                        width: parent.width
-                        linkColor: UbuntuColors.orange
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        text: i18n.tr("Version: ") + app.version
-                    }
-
-                    Label {
-                        width: parent.width
-                        linkColor: UbuntuColors.orange
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        // TRANSLATORS: Short description
-                        text: i18n.tr("Mines is a puzzle game where the goal is to find the mines in a minefield.")
-                        onLinkActivated: Qt.openUrlExternally(link)
-                    }
-
-                    Label {
-                        width: parent.width
-                        linkColor: UbuntuColors.orange
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        // TRANSLATORS: Game instructions
-                        text: i18n.tr("The minefield is divided into a grid of squares. Touch a square to check if there is a mine there. If no mine is present the square will show the number of mines surrounding it. Use logic to determine a square that cannot contain a mine to check next. If you hit a mine it explodes and the game is over. You can flag where a mine is by touching and holding that square. Have fun!")
-                        onLinkActivated: Qt.openUrlExternally(link)
-                    }
-
-                    Label {
-                        width: parent.width
-                        linkColor: UbuntuColors.orange
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        // TRANSLATORS: GPL notice
-                        text: i18n.tr("This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public License</a> for more details.")
-                        onLinkActivated: Qt.openUrlExternally(link)
-                    }
-
-                    Label {
-                        width: parent.width
-                        linkColor: UbuntuColors.orange
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        text: "<a href='https://github.com/NeoTheThird/Mines'>" + i18n.tr("SOURCE") + "</a> | <a href='https://github.com/NeoTheThird/Mines/issues'>" + i18n.tr("ISSUES") + "</a> | <a href='https://paypal.me/neothethird'>" + i18n.tr("DONATE") + "</a>"
-                        onLinkActivated: Qt.openUrlExternally(link)
-                    }
-
-                    Label {
-                        width: parent.width
-                        linkColor: UbuntuColors.orange
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        style: Font.Bold
-                        text: i18n.tr("Copyright (c) 2015 Robert Ancell")
-                    }
-
-                    Label {
-                        width: parent.width
-                        linkColor: UbuntuColors.orange
-                        horizontalAlignment: Text.AlignHCenter
-                        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        style: Font.Bold
-                        text: i18n.tr("Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>")
-                    }
-                }
+              }
+              Text {
+                id: time
+                anchors { left:clockIcon.right; verticalCenter: parent.verticalCenter}
+              }
             }
-        }
-
-        Page {
-            id: scores_page
-            visible: false
-            // TRANSLATORS: Title of page showing high scores
-            title: i18n.tr("High Scores")
-
-            head.actions:
-            [
-            Action {
-                // TRANSLATORS: Action in high scores page that clears scores
-                text: i18n.tr("Clear scores")
-                iconName: "reset"
-                onTriggered: PopupUtils.open(confirm_clear_scores_dialog)
-            }
-            ]
         }
 
         Page {
             id: settings_page
             visible: false
-            // TRANSLATORS: Title of page showing settings
-            title: i18n.tr("Settings")
+            header : PageHeader {
+                  id: settingsPageHeader
+                  // TRANSLATORS: Title of page showing settings
+                  title: i18n.tr("Settings")
+            }
 
             Column {
-                anchors.fill: parent
+                width: parent.width
+                anchors {
+                    top: settingsPageHeader.bottom
+                    bottom: parent.bottom
+                }
                 ListItem.Standard {
                     // TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
                     text: i18n.tr("Vibrate when placing flags")
@@ -378,5 +294,24 @@ MainView {
                 }
             }
         }
+
+        // // NOT USED FOR NOW
+        // Page {
+        //     id: scores_page
+        //     visible: false
+        //         header : PageHeader {
+        //             id: scoresPageHeader
+        //             // TRANSLATORS: Title of page showing high scores
+        //             title: i18n.tr("High Scores")
+        //
+        //             Action {
+        //                 // TRANSLATORS: Action in high scores page that clears scores
+        //                 text: i18n.tr("Clear scores")
+        //                 iconName: "reset"
+        //                 onTriggered: PopupUtils.open(confirm_clear_scores_dialog)
+        //             }
+        //             ]
+        //     }
+        // }
     }
 }

@@ -62,7 +62,7 @@ ListModel {
 
     function get_cell(column, row) {
         if(column < 0 || column >= columns || row < 0 || row > rows) { return undefined }
-        return get_index(row * columns + column)
+        return get(row * columns + column)
     }
 
     function flag(column, row) {
@@ -143,8 +143,10 @@ ListModel {
         function place_mine(skip_index) {
             while(true) {
                 var index = Math.floor(Math.random() * (columns * rows))
-                if(index == skip_index) { continue }
-                var cell = get_index(index)
+                if(index == skip_index) {
+                    continue
+                }
+                var cell = get(index)
                 if(!cell.has_mine) {
                     cell.has_mine = true
                     return
