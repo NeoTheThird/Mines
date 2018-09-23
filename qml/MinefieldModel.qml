@@ -36,6 +36,7 @@ ListModel {
     property bool completed: false
     property var start_time
     property var end_time
+    property double time_elapsed
     signal solved()
 
     function set_size(n_columns, n_rows, n) {
@@ -177,6 +178,18 @@ ListModel {
             for(var row = 0; row < rows; row++) {
                 get_cell(column, row).n_surrounding = n_surrounding(column, row)
             }
+        }
+    }
+
+    function update_time_elapsed() {
+        if (started) {
+            time_elapsed = new Date() - start_time
+            var minutes = Math.floor(time_elapsed / 60000)
+            var seconds = ((time_elapsed % 60000) / 1000).toFixed(0)
+            return (seconds == 60 ? (minutes+1) + ":00" : (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds)
+        }
+        else {
+            return "00:00"
         }
     }
 }

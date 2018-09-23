@@ -191,6 +191,30 @@ MainView {
                     use_haptic_feedback: haptic_check.checked
                 }
             }
+
+            Rectangle {
+                id: statusBar
+                width: parent.width
+                height: units.gu(20)
+                anchors.bottom: parent.bottom
+                Image {
+                    id: clockIcon
+                    anchors { left:left.parent; verticalCenter: parent.verticalCenter}
+                    source: "../assets/time.svg"
+                }
+
+                Item {
+                    Timer {
+                        interval: 500; running: true; repeat: true
+                        //onTriggered: time.text = Date()
+                        onTriggered: time.text = minefield.update_time_elapsed()
+                    }
+                }
+                Text {
+                    id: time
+                    anchors { left:clockIcon.right; verticalCenter: parent.verticalCenter}
+                }
+            }
         }
 
         Page {
