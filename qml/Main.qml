@@ -141,34 +141,36 @@ MainView {
         Page {
             id: main_page
             visible: false
-            // TRANSLATORS: Title of application
-            title: i18n.tr("Mines")
-            head.actions:
-            [
-            Action {
-                // TRANSLATORS: Action on main page that shows game instructions
-                text: i18n.tr("How to Play")
-                iconName: "help"
-                onTriggered: page_stack.push(how_to_play_page)
-            },
-            Action {
-                // TRANSLATORS: Action on main page that shows settings dialog
-                text: i18n.tr("Settings")
-                iconName: "settings"
-                onTriggered: page_stack.push(settings_page)
-            },
-            Action {
-                // TRANSLATORS: Action on main page that starts a new game
-                text: i18n.tr("New Game")
-                iconName: "reload"
-                onTriggered: {
-                    if(minefield.started && !minefield.completed)
-                    PopupUtils.open(confirm_new_game_dialog)
-                    else
-                    reset_field()
-                }
+            header: PageHeader {
+                id: main_header
+                // TRANSLATORS: Title of application
+                title: i18n.tr("Mines")
+                trailingActionBar.actions: [
+                    Action {
+                        // TRANSLATORS: Action on main page that shows game instructions
+                        text: i18n.tr("How to Play")
+                        iconName: "help"
+                        onTriggered: page_stack.push(how_to_play_page)
+                    },
+                    Action {
+                        // TRANSLATORS: Action on main page that shows settings dialog
+                        text: i18n.tr("Settings")
+                        iconName: "settings"
+                        onTriggered: page_stack.push(settings_page)
+                    },
+                    Action {
+                        // TRANSLATORS: Action on main page that starts a new game
+                        text: i18n.tr("New Game")
+                        iconName: "reload"
+                        onTriggered: {
+                            if(minefield.started && !minefield.completed)
+                            PopupUtils.open(confirm_new_game_dialog)
+                            else
+                            reset_field()
+                        }
+                    }
+                ]
             }
-            ]
 
             MinefieldModel {
                 id: minefield
@@ -182,7 +184,11 @@ MainView {
             }
 
             Item {
-                anchors.fill: parent
+                width: parent.width
+                anchors {
+                    top: main_header.bottom
+                    bottom: parent.bottom
+                }
                 anchors.margins: units.gu(2)
                 MinefieldView {
                     model: minefield
@@ -220,12 +226,19 @@ MainView {
         Page {
             id: how_to_play_page
             visible: false
-            // TRANSLATORS: Title of page with game instructions
-            title: i18n.tr("How to Play")
+            header : PageHeader {
+                id: how_to_play_header
+                // TRANSLATORS: Title of page with game instructions
+                title: i18n.tr("How to Play")
+                flickable: how_to_play_flick
+            }
+
             Flickable {
-                id: flick
+                id: how_to_play_flick
+                width: parent.width
                 anchors {
-                    fill: parent
+                    top: how_to_play_header.bottom
+                    bottom: parent.bottom
                     margins: units.gu(3)
                     topMargin: 0
                     bottomMargin: 0
@@ -326,28 +339,35 @@ MainView {
         Page {
             id: scores_page
             visible: false
-            // TRANSLATORS: Title of page showing high scores
-            title: i18n.tr("High Scores")
-
-            head.actions:
-            [
-            Action {
-                // TRANSLATORS: Action in high scores page that clears scores
-                text: i18n.tr("Clear scores")
-                iconName: "reset"
-                onTriggered: PopupUtils.open(confirm_clear_scores_dialog)
+            header: PageHeader {
+                id: scores_header
+                // TRANSLATORS: Title of page showing high scores
+                title: i18n.tr("High Scores")
+                Action {
+                    // TRANSLATORS: Action in high scores page that clears scores
+                    text: i18n.tr("Clear scores")
+                    iconName: "reset"
+                    onTriggered: PopupUtils.open(confirm_clear_scores_dialog)
+                }
             }
-            ]
         }
 
         Page {
             id: settings_page
             visible: false
-            // TRANSLATORS: Title of page showing settings
-            title: i18n.tr("Settings")
+            header: PageHeader {
+                id: settings_header
+                // TRANSLATORS: Title of page showing settings
+                title: i18n.tr("Settings")
+            }
+
 
             Column {
-                anchors.fill: parent
+                width: parent.width
+                anchors {
+                    top: settings_header.bottom
+                    bottom: parent.bottom
+                }
                 ListItem.Standard {
                     // TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
                     text: i18n.tr("Vibrate when placing flags")
