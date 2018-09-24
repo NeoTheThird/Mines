@@ -187,7 +187,7 @@ MainView {
                 width: parent.width
                 anchors {
                     top: main_header.bottom
-                    bottom: parent.bottom
+                    bottom: statBar.top
                 }
                 anchors.margins: units.gu(2)
                 MinefieldView {
@@ -199,26 +199,55 @@ MainView {
             }
 
             Rectangle {
-                id: statusBar
+                id: statBar
                 width: parent.width
                 height: units.gu(20)
-                anchors.bottom: parent.bottom
-                Image {
-                    id: clockIcon
-                    anchors { left:left.parent; verticalCenter: parent.verticalCenter}
-                    source: "../assets/time.svg"
+                anchors {
+                    bottom: parent.bottom
                 }
 
-                Item {
-                    Timer {
-                        interval: 500; running: true; repeat: true
-                        //onTriggered: time.text = Date()
-                        onTriggered: time.text = minefield.update_time_elapsed()
+                Row {
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                        verticalCenter: parent.verticalCenter
                     }
-                }
-                Text {
-                    id: time
-                    anchors { left:clockIcon.right; verticalCenter: parent.verticalCenter}
+
+                    Image {
+                        id: time_icon
+                        anchors {
+                            verticalCenter: parent.verticalCenter
+                            margins: units.gu(2)
+                        }
+                        source: "../assets/time.svg"
+                    }
+                    Rectangle{
+                        width: units.gu(8)
+                        height: parent.height
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Item {
+                            // anchors {
+                            //     verticalCenter: parent.verticalCenter
+                            //     horizontalCenter: parent.horizontalCenter
+                            //     margins: units.gu(2)
+                            // }
+                            Timer {
+                                interval: 500; running: true; repeat: true
+                                onTriggered: time.text = minefield.update_time_elapsed()
+                            }
+                            // Text {
+                            //     id: time
+                            // }
+                        }
+                        Text {
+                            id: time
+                            transformOrigin: Center
+                            anchors {
+                                verticalCenter: parent.verticalCenter
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+                    }
                 }
             }
         }
