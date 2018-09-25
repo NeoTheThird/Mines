@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-24 22:43+0000\n"
+"POT-Creation-Date: 2018-09-25 01:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. TRANSLATORS: Title for dialog confirming if scores should be cleared
 #. TRANSLATORS: Button in clear scores dialog that clears scores
 #. TRANSLATORS: Action in high scores page that clears scores
-#: ../qml/Main.qml:117 ../qml/Main.qml:122 ../qml/Main.qml:377
+#: ../qml/Main.qml:117 ../qml/Main.qml:122 ../qml/Main.qml:421
 msgid "Clear scores"
 msgstr ""
 
@@ -55,19 +55,19 @@ msgid "Keep existing scores"
 msgstr ""
 
 #. TRANSLATORS: Title of application
-#: ../qml/Main.qml:147 ../qml/Main.qml:287
+#: ../qml/Main.qml:147 ../qml/Main.qml:331
 msgid "Mines"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows game instructions
 #. TRANSLATORS: Title of page with game instructions
-#: ../qml/Main.qml:151 ../qml/Main.qml:261
+#: ../qml/Main.qml:151 ../qml/Main.qml:305
 msgid "How to Play"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows settings dialog
 #. TRANSLATORS: Title of page showing settings
-#: ../qml/Main.qml:157 ../qml/Main.qml:390
+#: ../qml/Main.qml:157 ../qml/Main.qml:434
 msgid "Settings"
 msgstr ""
 
@@ -76,18 +76,18 @@ msgstr ""
 msgid "New Game"
 msgstr ""
 
-#: ../qml/Main.qml:305
+#: ../qml/Main.qml:349
 msgid "Version: "
 msgstr ""
 
 #. TRANSLATORS: Short description
-#: ../qml/Main.qml:314
+#: ../qml/Main.qml:358
 msgid ""
 "Mines is a puzzle game where the goal is to find the mines in a minefield."
 msgstr ""
 
 #. TRANSLATORS: Game instructions
-#: ../qml/Main.qml:324
+#: ../qml/Main.qml:368
 msgid ""
 "The minefield is divided into a grid of squares. Touch a square to check if "
 "there is a mine there. If no mine is present the square will show the number "
@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: GPL notice
-#: ../qml/Main.qml:334
+#: ../qml/Main.qml:378
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -109,52 +109,52 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/Main.qml:343
+#: ../qml/Main.qml:387
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/Main.qml:343
+#: ../qml/Main.qml:387
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/Main.qml:343
+#: ../qml/Main.qml:387
 msgid "DONATE"
 msgstr ""
 
-#: ../qml/Main.qml:353
+#: ../qml/Main.qml:397
 msgid "Copyright (c) 2015 Robert Ancell"
 msgstr ""
 
-#: ../qml/Main.qml:362
+#: ../qml/Main.qml:406
 msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
 msgstr ""
 
 #. TRANSLATORS: Title of page showing high scores
-#: ../qml/Main.qml:374
+#: ../qml/Main.qml:418
 msgid "High Scores"
 msgstr ""
 
 #. TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
-#: ../qml/Main.qml:402
+#: ../qml/Main.qml:446
 msgid "Vibrate when placing flags"
 msgstr ""
 
 #. TRANSLATORS: Label above setting to choose the minefield size
-#: ../qml/Main.qml:412
+#: ../qml/Main.qml:456
 msgid "Minefield size:"
 msgstr ""
 
 #. TRANSLATORS: Setting name for small minefield
-#: ../qml/Main.qml:419
+#: ../qml/Main.qml:463
 msgid "Small"
 msgstr ""
 
 #. TRANSLATORS: Setting name for large minefield
-#: ../qml/Main.qml:422
+#: ../qml/Main.qml:466
 msgid "Large"
 msgstr ""
 
 #. TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
-#: ../qml/Main.qml:428
+#: ../qml/Main.qml:472
 msgid "%width%×%height%, %nmines% mines"
 msgstr ""

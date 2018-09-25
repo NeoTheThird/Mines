@@ -198,53 +198,97 @@ MainView {
                 }
             }
 
-            Rectangle {
+            Grid {
                 id: statBar
                 width: parent.width
                 height: units.gu(20)
                 anchors {
                     bottom: parent.bottom
                 }
+                //anchors.fill: parent
+                horizontalItemAlignment: Grid.AlignHCenter
+                verticalItemAlignment: Grid.AlignVCenter
+                columns: 2
 
-                Row {
+                Rectangle {
+                    id: time_elapsed_rectangle
+                    height: parent.height
+                    width: parent.width/2
                     anchors {
-                        horizontalCenter: parent.horizontalCenter
+                        left: parent.left
                         verticalCenter: parent.verticalCenter
                     }
 
-                    Image {
-                        id: time_icon
+                    Row {
                         anchors {
+                            horizontalCenter: parent.horizontalCenter
                             verticalCenter: parent.verticalCenter
-                            margins: units.gu(2)
                         }
-                        source: "../assets/time.svg"
-                    }
-                    Rectangle{
-                        width: units.gu(8)
-                        height: parent.height
-                        anchors.verticalCenter: parent.verticalCenter
 
-                        Item {
-                            // anchors {
-                            //     verticalCenter: parent.verticalCenter
-                            //     horizontalCenter: parent.horizontalCenter
-                            //     margins: units.gu(2)
-                            // }
-                            Timer {
-                                interval: 500; running: true; repeat: true
-                                onTriggered: time.text = minefield.update_time_elapsed()
-                            }
-                            // Text {
-                            //     id: time
-                            // }
-                        }
-                        Text {
-                            id: time
-                            transformOrigin: Center
+                        Image {
+                            id: time_icon
                             anchors {
                                 verticalCenter: parent.verticalCenter
-                                horizontalCenter: parent.horizontalCenter
+                                margins: units.gu(2)
+                            }
+                            source: "../assets/time.svg"
+                        }
+                        Rectangle{
+                            width: units.gu(8)
+                            height: parent.height
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            Item {
+                                Timer {
+                                    interval: 500; running: true; repeat: true
+                                    onTriggered: time.text = minefield.update_time_elapsed()
+                                }
+                            }
+                            Text {
+                                id: time
+                                anchors {
+                                    verticalCenter: parent.verticalCenter
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    height: parent.height
+                    anchors {
+                        right: parent.right
+                        left: time_elapsed_rectangle.right
+                        verticalCenter: parent.verticalCenter
+                    }
+
+                    Row {
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        Image {
+                            id: mine_icon
+                            anchors {
+                                verticalCenter: parent.verticalCenter
+                                margins: units.gu(2)
+                            }
+                            source: "../assets/mine.svg"
+                        }
+
+                        Rectangle{
+                            width: units.gu(8)
+                            height: parent.height
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            Text {
+                                anchors {
+                                    verticalCenter: parent.verticalCenter
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                                text: minefield.n_flags + "/" + minefield.n_mines
                             }
                         }
                     }

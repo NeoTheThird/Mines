@@ -33,6 +33,7 @@ ListModel {
     property bool started: false
     property int n_checked: 0
     property int n_mines
+    property int n_flags: 0
     property bool completed: false
     property var start_time
     property var end_time
@@ -72,6 +73,9 @@ ListModel {
         // Can only flag unknown cells
         if(cell.checked) { return false }
 
+        // Update n_flags
+        if(cell.flagged) { n_flags-- }
+        else { n_flags++ }
         // toggle flag status
         cell.flagged = !cell.flagged
 
