@@ -82,6 +82,12 @@ MainView {
     {
         var grid_options = size_selector.model.get(size_selector.selectedIndex)
         minefield.set_size(grid_options.grid_width, grid_options.grid_height, grid_options.n_mines)
+        reset_timer()
+    }
+
+    function reset_timer()
+    {
+        if (!minefield.completed && !timer.running) { timer.start() }
     }
 
     Component {
@@ -175,11 +181,14 @@ MainView {
             MinefieldModel {
                 id: minefield
                 onSolved: {
-                    get_history_database().transaction(function(t) {
-                        t.executeSql("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
-                        var duration = minefield.end_time - minefield.start_time
-                        t.executeSql("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString(), duration])
-                    })
+                    if (minefield.loosed != true) {
+                        get_history_database().transaction(function(t) {
+                            t.executeSql("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
+                            var duration = minefield.end_time - minefield.start_time
+                            t.executeSql("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString(), duration])
+                        })
+                    }
+                    timer.stop()
                 }
             }
 
@@ -239,8 +248,10 @@ MainView {
                             anchors.verticalCenter: parent.verticalCenter
 
                             Item {
+                                Component.onCompleted: reset_timer()
                                 Timer {
-                                    interval: 500; running: true; repeat: true
+                                    id: timer
+                                    interval: 500; running: false; repeat: true
                                     onTriggered: time.text = minefield.update_time_elapsed()
                                 }
                             }
@@ -493,6 +504,12 @@ MainView {
                     grid_height: 16
                     n_mines: 25
                 }
+                // ListElement {
+                //     name: "test"
+                //     grid_width: 3
+                //     grid_height: 3
+                //     n_mines: 2
+                // }
             }
         }
     }

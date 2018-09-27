@@ -35,6 +35,7 @@ ListModel {
     property int n_mines
     property int n_flags: 0
     property bool completed: false
+    property bool loosed: false
     property var start_time
     property var end_time
     property double time_elapsed
@@ -47,6 +48,7 @@ ListModel {
         n_checked = 0
         n_mines = n
         completed = false
+        loosed = false
         clear()
         for(var row = 0; row < n_rows; row++) {
             for(var column = 0; column < n_columns; column++) {
@@ -114,6 +116,8 @@ ListModel {
 
         if(cell.has_mine) {
             completed = true
+            loosed = true
+            solved()
         } else {
             var n_flagged_mines = n_surrounding_flagged(cell.column, cell.row)
             if(cell.n_surrounding <= n_flagged_mines) {
