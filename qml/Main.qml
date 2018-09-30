@@ -207,28 +207,21 @@ MainView {
                 }
             }
 
-            Grid {
+            Rectangle {
                 id: statBar
                 width: parent.width
                 height: units.gu(20)
-                anchors {
-                    bottom: parent.bottom
-                }
-                //anchors.fill: parent
-                horizontalItemAlignment: Grid.AlignHCenter
-                verticalItemAlignment: Grid.AlignVCenter
-                columns: 2
+                anchors.bottom: parent.bottom
 
                 Rectangle {
-                    id: time_elapsed_rectangle
                     height: parent.height
                     width: parent.width/2
                     anchors {
                         left: parent.left
-                        verticalCenter: parent.verticalCenter
                     }
 
                     Row {
+                        height: parent.height
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                             verticalCenter: parent.verticalCenter
@@ -268,13 +261,13 @@ MainView {
 
                 Rectangle {
                     height: parent.height
+                    width: parent.width/2
                     anchors {
                         right: parent.right
-                        left: time_elapsed_rectangle.right
-                        verticalCenter: parent.verticalCenter
                     }
 
                     Row {
+                        height: parent.height
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                             verticalCenter: parent.verticalCenter
