@@ -79,13 +79,15 @@ msgstr "Nouvelle partie"
 
 #: ../qml/Main.qml:242
 msgid "Version: "
-msgstr ""
+msgstr "Version : "
 
 #. TRANSLATORS: Short description
 #: ../qml/Main.qml:251
 msgid ""
 "Mines is a puzzle game where the goal is to find the mines in a minefield."
 msgstr ""
+"Démineur est un jeu de réflexion dont le but est de localiser les mines dans"
+"un champ de mines."
 
 #. TRANSLATORS: Game instructions
 #: ../qml/Main.qml:261
@@ -96,6 +98,12 @@ msgid ""
 "a mine to check next. If you hit a mine it explodes and the game is over. "
 "You can flag where a mine is by touching and holding that square. Have fun!"
 msgstr ""
+"Le champ de mines est représenté par une grille. Touchez une case pour "
+"vérifier si elle cache une mine. S'il n'y a pas de mine, la case dévoilera le "
+"nombre de mines autour de la case. Déduisez-en une case qui ne peut pas "
+"contenir de mine et dévoilez-la. Si vous touchez une mine, celle-ci explose "
+"et la partie est terminée. Vous pouvez marquer une case avec un drapeau en la "
+"maintenant appuyée pour indiquer qu'elle contient une mine. Amusez-vous!"
 
 #. TRANSLATORS: GPL notice
 #: ../qml/Main.qml:271
@@ -109,26 +117,34 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
+"Ce programme est un logiciel libre : vous pouvez le partager et/ou le modifier"
+" en respectant les termes de la licence GNU General Public License telle que "
+"publiée par la Free Software Foundation, dans sa 3e version ou (au choix) dans"
+" une version postérieure. Ce programme est partagé dans l'espoir qu'il soit "
+"utile, mais SANS AUCUNE GARANTIE; sans même une garantie de MARCHANDISATION "
+"ni de COMPATIBILITÉ POUR UN USAGE SPÉCIFIQUE. Consultez la <a "
+"href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
+"License</a> pour plus de détails."
 
 #: ../qml/Main.qml:280
 msgid "SOURCE"
-msgstr ""
+msgstr "SOURCE"
 
 #: ../qml/Main.qml:280
 msgid "ISSUES"
-msgstr ""
+msgstr "BOGUE"
 
 #: ../qml/Main.qml:280
 msgid "DONATE"
-msgstr ""
+msgstr "FAIRE UN DON"
 
 #: ../qml/Main.qml:290
 msgid "Copyright (c) 2015 Robert Ancell"
-msgstr ""
+msgstr "Copyright (c) 2015 Robert Ancell"
 
 #: ../qml/Main.qml:299
 msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
-msgstr ""
+msgstr "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
 
 #. TRANSLATORS: Title of page showing high scores
 #: ../qml/Main.qml:309

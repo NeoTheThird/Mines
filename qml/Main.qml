@@ -82,6 +82,12 @@ MainView {
     {
         var grid_options = size_selector.model.get(size_selector.selectedIndex)
         minefield.set_size(grid_options.grid_width, grid_options.grid_height, grid_options.n_mines)
+        reset_timer()
+    }
+
+    function reset_timer()
+    {
+        if (!minefield.completed && !timer.running) { timer.start() }
     }
 
     Component {
@@ -141,48 +147,57 @@ MainView {
         Page {
             id: main_page
             visible: false
-            // TRANSLATORS: Title of application
-            title: i18n.tr("Mines")
-            head.actions:
-            [
-            Action {
-                // TRANSLATORS: Action on main page that shows game instructions
-                text: i18n.tr("How to Play")
-                iconName: "help"
-                onTriggered: page_stack.push(how_to_play_page)
-            },
-            Action {
-                // TRANSLATORS: Action on main page that shows settings dialog
-                text: i18n.tr("Settings")
-                iconName: "settings"
-                onTriggered: page_stack.push(settings_page)
-            },
-            Action {
-                // TRANSLATORS: Action on main page that starts a new game
-                text: i18n.tr("New Game")
-                iconName: "reload"
-                onTriggered: {
-                    if(minefield.started && !minefield.completed)
-                    PopupUtils.open(confirm_new_game_dialog)
-                    else
-                    reset_field()
-                }
+            header: PageHeader {
+                id: main_header
+                // TRANSLATORS: Title of application
+                title: i18n.tr("Mines")
+                trailingActionBar.actions: [
+                    Action {
+                        // TRANSLATORS: Action on main page that shows game instructions
+                        text: i18n.tr("How to Play")
+                        iconName: "help"
+                        onTriggered: page_stack.push(how_to_play_page)
+                    },
+                    Action {
+                        // TRANSLATORS: Action on main page that shows settings dialog
+                        text: i18n.tr("Settings")
+                        iconName: "settings"
+                        onTriggered: page_stack.push(settings_page)
+                    },
+                    Action {
+                        // TRANSLATORS: Action on main page that starts a new game
+                        text: i18n.tr("New Game")
+                        iconName: "reload"
+                        onTriggered: {
+                            if(minefield.started && !minefield.completed)
+                            PopupUtils.open(confirm_new_game_dialog)
+                            else
+                            reset_field()
+                        }
+                    }
+                ]
             }
-            ]
 
             MinefieldModel {
                 id: minefield
                 onSolved: {
-                    get_history_database().transaction(function(t) {
-                        t.executeSql("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
-                        var duration = minefield.end_time - minefield.start_time
-                        t.executeSql("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString(), duration])
-                    })
+                    if (minefield.loosed != true) {
+                        get_history_database().transaction(function(t) {
+                            t.executeSql("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
+                            var duration = minefield.end_time - minefield.start_time
+                            t.executeSql("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString(), duration])
+                        })
+                    }
+                    timer.stop()
                 }
             }
 
             Item {
-                anchors.fill: parent
+                width: parent.width
+                anchors {
+                    top: main_header.bottom
+                    bottom: statBar.top
+                }
                 anchors.margins: units.gu(2)
                 MinefieldView {
                     model: minefield
@@ -191,17 +206,116 @@ MainView {
                     use_haptic_feedback: haptic_check.checked
                 }
             }
+
+            Rectangle {
+                id: statBar
+                width: parent.width
+                height: units.gu(20)
+                anchors.bottom: parent.bottom
+
+                Rectangle {
+                    height: parent.height
+                    width: parent.width/2
+                    anchors {
+                        left: parent.left
+                    }
+
+                    Row {
+                        height: parent.height
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        Image {
+                            id: time_icon
+                            anchors {
+                                verticalCenter: parent.verticalCenter
+                                margins: units.gu(2)
+                            }
+                            source: "../assets/time.svg"
+                        }
+                        Rectangle{
+                            width: units.gu(8)
+                            height: parent.height
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            Item {
+                                Component.onCompleted: reset_timer()
+                                Timer {
+                                    id: timer
+                                    interval: 500; running: false; repeat: true
+                                    onTriggered: time.text = minefield.update_time_elapsed()
+                                }
+                            }
+                            Text {
+                                id: time
+                                anchors {
+                                    verticalCenter: parent.verticalCenter
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    height: parent.height
+                    width: parent.width/2
+                    anchors {
+                        right: parent.right
+                    }
+
+                    Row {
+                        height: parent.height
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        Image {
+                            id: mine_icon
+                            anchors {
+                                verticalCenter: parent.verticalCenter
+                                margins: units.gu(2)
+                            }
+                            source: "../assets/mine.svg"
+                        }
+
+                        Rectangle{
+                            width: units.gu(8)
+                            height: parent.height
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            Text {
+                                anchors {
+                                    verticalCenter: parent.verticalCenter
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                                text: minefield.n_flags + "/" + minefield.n_mines
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         Page {
             id: how_to_play_page
             visible: false
-            // TRANSLATORS: Title of page with game instructions
-            title: i18n.tr("How to Play")
+            header : PageHeader {
+                id: how_to_play_header
+                // TRANSLATORS: Title of page with game instructions
+                title: i18n.tr("How to Play")
+                flickable: how_to_play_flick
+            }
+
             Flickable {
-                id: flick
+                id: how_to_play_flick
+                width: parent.width
                 anchors {
-                    fill: parent
+                    top: how_to_play_header.bottom
+                    bottom: parent.bottom
                     margins: units.gu(3)
                     topMargin: 0
                     bottomMargin: 0
@@ -302,28 +416,35 @@ MainView {
         Page {
             id: scores_page
             visible: false
-            // TRANSLATORS: Title of page showing high scores
-            title: i18n.tr("High Scores")
-
-            head.actions:
-            [
-            Action {
-                // TRANSLATORS: Action in high scores page that clears scores
-                text: i18n.tr("Clear scores")
-                iconName: "reset"
-                onTriggered: PopupUtils.open(confirm_clear_scores_dialog)
+            header: PageHeader {
+                id: scores_header
+                // TRANSLATORS: Title of page showing high scores
+                title: i18n.tr("High Scores")
+                Action {
+                    // TRANSLATORS: Action in high scores page that clears scores
+                    text: i18n.tr("Clear scores")
+                    iconName: "reset"
+                    onTriggered: PopupUtils.open(confirm_clear_scores_dialog)
+                }
             }
-            ]
         }
 
         Page {
             id: settings_page
             visible: false
-            // TRANSLATORS: Title of page showing settings
-            title: i18n.tr("Settings")
+            header: PageHeader {
+                id: settings_header
+                // TRANSLATORS: Title of page showing settings
+                title: i18n.tr("Settings")
+            }
+
 
             Column {
-                anchors.fill: parent
+                width: parent.width
+                anchors {
+                    top: settings_header.bottom
+                    bottom: parent.bottom
+                }
                 ListItem.Standard {
                     // TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
                     text: i18n.tr("Vibrate when placing flags")
@@ -376,6 +497,12 @@ MainView {
                     grid_height: 16
                     n_mines: 25
                 }
+                // ListElement {
+                //     name: "test"
+                //     grid_width: 3
+                //     grid_height: 3
+                //     n_mines: 2
+                // }
             }
         }
     }
