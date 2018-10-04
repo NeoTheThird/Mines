@@ -210,7 +210,7 @@ MainView {
             Rectangle {
                 id: statBar
                 width: parent.width
-                height: units.gu(20)
+                height: units.gu(8)
                 anchors.bottom: parent.bottom
 
                 Rectangle {
@@ -465,6 +465,9 @@ MainView {
                             case "small":
                                 // TRANSLATORS: Setting name for small minefield
                                 return i18n.tr("Small")
+                            case "medium":
+                                // TRANSLATORS: Setting name for medium minefield
+                                return i18n.tr("Medium")
                             case "large":
                                 // TRANSLATORS: Setting name for large minefield
                                 return i18n.tr("Large")
@@ -492,17 +495,17 @@ MainView {
                     n_mines: 10
                 }
                 ListElement {
-                    name: "large"
+                    name: "medium"
                     grid_width: 10
                     grid_height: 16
                     n_mines: 25
                 }
-                // ListElement {
-                //     name: "test"
-                //     grid_width: 3
-                //     grid_height: 3
-                //     n_mines: 2
-                // }
+                ListElement {
+                    name: "large"
+                    grid_width: 18
+                    grid_height: 24
+                    n_mines: 99
+                }
             }
         }
     }
