@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-30 15:33+0000\n"
+"POT-Creation-Date: 2018-10-04 01:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,12 +149,17 @@ msgstr ""
 msgid "Small"
 msgstr ""
 
-#. TRANSLATORS: Setting name for large minefield
+#. TRANSLATORS: Setting name for medium minefield
 #: ../qml/Main.qml:470
+msgid "Medium"
+msgstr ""
+
+#. TRANSLATORS: Setting name for large minefield
+#: ../qml/Main.qml:473
 msgid "Large"
 msgstr ""
 
 #. TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
-#: ../qml/Main.qml:476
+#: ../qml/Main.qml:479
 msgid "%width%×%height%, %nmines% mines"
 msgstr ""
