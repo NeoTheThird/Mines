@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 01:51+0000\n"
+"POT-Creation-Date: 2018-10-24 02:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,96 +18,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:129
+#: ../qml/Main.qml:138
 msgid "Game in progress"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:131
+#: ../qml/Main.qml:140
 msgid "Are you sure you want to restart this game?"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
-#: ../qml/Main.qml:134
+#: ../qml/Main.qml:143
 msgid "Restart game"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels new game request
-#: ../qml/Main.qml:143
+#: ../qml/Main.qml:152
 msgid "Continue current game"
 msgstr ""
 
 #. TRANSLATORS: Title for dialog confirming if scores should be cleared
 #. TRANSLATORS: Button in clear scores dialog that clears scores
 #. TRANSLATORS: Action in high scores page that clears scores
-#: ../qml/Main.qml:154 ../qml/Main.qml:159 ../qml/Main.qml:496
+#: ../qml/Main.qml:163 ../qml/Main.qml:168 ../qml/Main.qml:505
 msgid "Clear scores"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog confirming if scores should be cleared
-#: ../qml/Main.qml:156
+#: ../qml/Main.qml:165
 msgid "Existing scores will be deleted. This cannot be undone."
 msgstr ""
 
 #. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
-#: ../qml/Main.qml:168
+#: ../qml/Main.qml:177
 msgid "Keep existing scores"
 msgstr ""
 
 #. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:179
+#: ../qml/Main.qml:188
 msgid "Restar needed to apply the new theme"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:181
+#: ../qml/Main.qml:190
 msgid "Quit now?"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
-#: ../qml/Main.qml:184
+#: ../qml/Main.qml:193
 msgid "Yes"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels new game request
-#: ../qml/Main.qml:193
+#: ../qml/Main.qml:202
 msgid "No"
 msgstr ""
 
 #. TRANSLATORS: Title of application
-#: ../qml/Main.qml:209 ../qml/Main.qml:403
+#: ../qml/Main.qml:218 ../qml/Main.qml:412
 msgid "Mines"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows game instructions
 #. TRANSLATORS: Title of page with game instructions
-#: ../qml/Main.qml:216 ../qml/Main.qml:377
+#: ../qml/Main.qml:225 ../qml/Main.qml:386
 msgid "How to Play"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows settings dialog
 #. TRANSLATORS: Title of page showing settings
-#: ../qml/Main.qml:222 ../qml/Main.qml:512
+#: ../qml/Main.qml:231 ../qml/Main.qml:521
 msgid "Settings"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that starts a new game
-#: ../qml/Main.qml:228
+#: ../qml/Main.qml:237
 msgid "New Game"
 msgstr ""
 
-#: ../qml/Main.qml:421
+#: ../qml/Main.qml:430
 msgid "Version: "
 msgstr ""
 
 #. TRANSLATORS: Short description
-#: ../qml/Main.qml:430
+#: ../qml/Main.qml:439
 msgid ""
 "Mines is a puzzle game where the goal is to find the mines in a minefield."
 msgstr ""
 
 #. TRANSLATORS: Game instructions
-#: ../qml/Main.qml:440
+#: ../qml/Main.qml:449
 msgid ""
 "The minefield is divided into a grid of squares. Touch a square to check if "
 "there is a mine there. If no mine is present the square will show the number "
@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: GPL notice
-#: ../qml/Main.qml:450
+#: ../qml/Main.qml:459
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -129,77 +129,77 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/Main.qml:459
+#: ../qml/Main.qml:468
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/Main.qml:459
+#: ../qml/Main.qml:468
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/Main.qml:459
+#: ../qml/Main.qml:468
 msgid "DONATE"
 msgstr ""
 
-#: ../qml/Main.qml:469
+#: ../qml/Main.qml:478
 msgid "Copyright (c) 2015 Robert Ancell"
 msgstr ""
 
-#: ../qml/Main.qml:478
+#: ../qml/Main.qml:487
 msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
 msgstr ""
 
 #. TRANSLATORS: Title of page showing high scores
-#: ../qml/Main.qml:493
+#: ../qml/Main.qml:502
 msgid "High Scores"
 msgstr ""
 
 #. TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
-#: ../qml/Main.qml:523
+#: ../qml/Main.qml:532
 msgid "Vibrate when placing flags"
 msgstr ""
 
 #. TRANSLATORS: Label above setting to choose the minefield size
-#: ../qml/Main.qml:533
+#: ../qml/Main.qml:542
 msgid "Minefield size:"
 msgstr ""
 
 #. TRANSLATORS: Setting name for small minefield
-#: ../qml/Main.qml:540
+#: ../qml/Main.qml:549
 msgid "Small"
 msgstr ""
 
 #. TRANSLATORS: Setting name for medium minefield
-#: ../qml/Main.qml:543
+#: ../qml/Main.qml:552
 msgid "Medium"
 msgstr ""
 
 #. TRANSLATORS: Setting name for large minefield
-#: ../qml/Main.qml:546
+#: ../qml/Main.qml:555
 msgid "Large"
 msgstr ""
 
 #. TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
-#: ../qml/Main.qml:552
+#: ../qml/Main.qml:561
 msgid "%width%×%height%, %nmines% mines"
 msgstr ""
 
 #. TRANSLATORS: Label above setting to choose the minefield size
-#: ../qml/Main.qml:563
+#: ../qml/Main.qml:572
 msgid "Theme:"
 msgstr ""
 
 #. TRANSLATORS: Setting name for small minefield
-#: ../qml/Main.qml:570
+#: ../qml/Main.qml:579
 msgid "Classic"
 msgstr ""
 
 #. TRANSLATORS: Setting name for medium minefield
-#: ../qml/Main.qml:573
+#: ../qml/Main.qml:582
 msgid "Dark"
 msgstr ""
 
 #. TRANSLATORS: Setting name for large minefield
-#: ../qml/Main.qml:576
+#: ../qml/Main.qml:585
 msgid "Ubuntu"
 msgstr ""

@@ -100,7 +100,16 @@ MainView {
             var theme_options = theme_selector.model.get(theme_selector.selectedIndex)
             // The lock field is to ensure the INSERT will always replace this row instead of adding another
             t.executeSql("CREATE TABLE IF NOT EXISTS Settings(lock INTEGER, use_haptic BOOLEAN, grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, background_color STRING, unchecked_color STRING, checked_color STRING, font_color STIRNG, PRIMARY KEY (lock))")
-            t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines, theme_options.background_color, theme_options.unchecked_color, theme_options.checked_color, theme_options.font_color])
+            try {
+                t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines, theme_options.background_color, theme_options.unchecked_color, theme_options.checked_color, theme_options.font_color])
+            }
+            catch(e) {
+                t.executeSql("ALTER TABLE Settings ADD background_color STRING")
+                t.executeSql("ALTER TABLE Settings ADD unchecked_color STRING")
+                t.executeSql("ALTER TABLE Settings ADD checked_color STRING")
+                t.executeSql("ALTER TABLE Settings ADD font_color STRING")
+                t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines, theme_options.background_color, theme_options.unchecked_color, theme_options.checked_color, theme_options.font_color])
+            }
         })
     }
 
