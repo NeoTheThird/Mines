@@ -104,6 +104,7 @@ MainView {
                 t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines, theme_options.background_color, theme_options.unchecked_color, theme_options.checked_color, theme_options.font_color])
             }
             catch(e) {
+                //Need to update database of previous version
                 t.executeSql("ALTER TABLE Settings ADD background_color STRING")
                 t.executeSql("ALTER TABLE Settings ADD unchecked_color STRING")
                 t.executeSql("ALTER TABLE Settings ADD checked_color STRING")
