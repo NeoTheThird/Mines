@@ -47,6 +47,7 @@ ListModel {
         started = false
         n_checked = 0
         n_mines = n
+        n_flags = 0
         completed = false
         loosed = false
         clear()
