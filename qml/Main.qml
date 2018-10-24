@@ -46,7 +46,7 @@ MainView {
     property var unchecked_color: "#AAAAFF"
     property var checked_color: "#CCCCFF"
     property var font_color: "#000000"
-    property var theme_counter: False
+    property var theme_counter: 0
 
     width: units.gu(40)
     height: units.gu(71)
@@ -76,6 +76,7 @@ MainView {
                     var s = theme_selector.model.get(i)
                     if(s.background_color == item.background_color && s.unchecked_color == item.unchecked_color && s.checked_color == item.checked_color && s.font_color == item.font_color) {
                         theme_selector.selectedIndex = i
+                        if (i == 0){theme_counter++}
                         break
                     }
                 }
@@ -511,7 +512,6 @@ MainView {
                 title: i18n.tr("Settings")
             }
 
-
             Column {
                 width: parent.width
                 anchors {
@@ -578,15 +578,11 @@ MainView {
                                 return ""
                             }
                         }
-                        // TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
-                        // subText: i18n.tr("%width%×%height%, %nmines% mines").replace("%width%", grid_width).replace("%height%", grid_height).replace("%nmines%", n_mines)
                     }
                     onSelectedIndexChanged: {
                         save_state()
-                        if(theme_counter) {
-                            PopupUtils.open(confirm_restart_needed)
-                        }
-                        else {theme_counter = true}
+                        if(theme_counter > 0) {PopupUtils.open(confirm_restart_needed)}
+                        else {theme_counter++}
                     }
                 }
             }

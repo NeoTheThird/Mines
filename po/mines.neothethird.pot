@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-24 01:31+0000\n"
+"POT-Creation-Date: 2018-10-24 01:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,96 +18,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:128
+#: ../qml/Main.qml:129
 msgid "Game in progress"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:130
+#: ../qml/Main.qml:131
 msgid "Are you sure you want to restart this game?"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
-#: ../qml/Main.qml:133
+#: ../qml/Main.qml:134
 msgid "Restart game"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels new game request
-#: ../qml/Main.qml:142
+#: ../qml/Main.qml:143
 msgid "Continue current game"
 msgstr ""
 
 #. TRANSLATORS: Title for dialog confirming if scores should be cleared
 #. TRANSLATORS: Button in clear scores dialog that clears scores
 #. TRANSLATORS: Action in high scores page that clears scores
-#: ../qml/Main.qml:153 ../qml/Main.qml:158 ../qml/Main.qml:495
+#: ../qml/Main.qml:154 ../qml/Main.qml:159 ../qml/Main.qml:496
 msgid "Clear scores"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog confirming if scores should be cleared
-#: ../qml/Main.qml:155
+#: ../qml/Main.qml:156
 msgid "Existing scores will be deleted. This cannot be undone."
 msgstr ""
 
 #. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
-#: ../qml/Main.qml:167
+#: ../qml/Main.qml:168
 msgid "Keep existing scores"
 msgstr ""
 
 #. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:178
+#: ../qml/Main.qml:179
 msgid "Restar needed to apply the new theme"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:180
+#: ../qml/Main.qml:181
 msgid "Quit now?"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
-#: ../qml/Main.qml:183
+#: ../qml/Main.qml:184
 msgid "Yes"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels new game request
-#: ../qml/Main.qml:192
+#: ../qml/Main.qml:193
 msgid "No"
 msgstr ""
 
 #. TRANSLATORS: Title of application
-#: ../qml/Main.qml:208 ../qml/Main.qml:402
+#: ../qml/Main.qml:209 ../qml/Main.qml:403
 msgid "Mines"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows game instructions
 #. TRANSLATORS: Title of page with game instructions
-#: ../qml/Main.qml:215 ../qml/Main.qml:376
+#: ../qml/Main.qml:216 ../qml/Main.qml:377
 msgid "How to Play"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows settings dialog
 #. TRANSLATORS: Title of page showing settings
-#: ../qml/Main.qml:221 ../qml/Main.qml:511
+#: ../qml/Main.qml:222 ../qml/Main.qml:512
 msgid "Settings"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that starts a new game
-#: ../qml/Main.qml:227
+#: ../qml/Main.qml:228
 msgid "New Game"
 msgstr ""
 
-#: ../qml/Main.qml:420
+#: ../qml/Main.qml:421
 msgid "Version: "
 msgstr ""
 
 #. TRANSLATORS: Short description
-#: ../qml/Main.qml:429
+#: ../qml/Main.qml:430
 msgid ""
 "Mines is a puzzle game where the goal is to find the mines in a minefield."
 msgstr ""
 
 #. TRANSLATORS: Game instructions
-#: ../qml/Main.qml:439
+#: ../qml/Main.qml:440
 msgid ""
 "The minefield is divided into a grid of squares. Touch a square to check if "
 "there is a mine there. If no mine is present the square will show the number "
@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: GPL notice
-#: ../qml/Main.qml:449
+#: ../qml/Main.qml:450
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -129,28 +129,28 @@ msgid ""
 "License</a> for more details."
 msgstr ""
 
-#: ../qml/Main.qml:458
+#: ../qml/Main.qml:459
 msgid "SOURCE"
 msgstr ""
 
-#: ../qml/Main.qml:458
+#: ../qml/Main.qml:459
 msgid "ISSUES"
 msgstr ""
 
-#: ../qml/Main.qml:458
+#: ../qml/Main.qml:459
 msgid "DONATE"
 msgstr ""
 
-#: ../qml/Main.qml:468
+#: ../qml/Main.qml:469
 msgid "Copyright (c) 2015 Robert Ancell"
 msgstr ""
 
-#: ../qml/Main.qml:477
+#: ../qml/Main.qml:478
 msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
 msgstr ""
 
 #. TRANSLATORS: Title of page showing high scores
-#: ../qml/Main.qml:492
+#: ../qml/Main.qml:493
 msgid "High Scores"
 msgstr ""
 
