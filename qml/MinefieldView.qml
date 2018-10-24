@@ -53,7 +53,7 @@ Grid {
         Rectangle {
             width: grid.cell_size - parent.spacing
             height: grid.cell_size - parent.spacing
-            color: checked ? "#CCCCFF" : "#AAAAFF"
+            color: checked ? checked_color : unchecked_color
             rotation: grid.landscape ? -90 : 0
             radius: 5
             Image {
