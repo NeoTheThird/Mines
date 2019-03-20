@@ -34,6 +34,7 @@ Grid {
     columns: model.columns
     rows: model.rows
     rotation: landscape ? 90 : 0
+    spacing: 5
     Behavior on rotation {
         NumberAnimation {
             easing: UbuntuAnimation.StandardEasing
@@ -50,12 +51,11 @@ Grid {
         id: repeater
         model: grid.model
         Rectangle {
-            width: grid.cell_size
-            height: grid.cell_size
-            color: checked ? "#CCCCFF" : "#AAAAFF"
-            border.width: 1
-            border.color: checked ? color: "#4040FF"
+            width: grid.cell_size - parent.spacing
+            height: grid.cell_size - parent.spacing
+            color: checked ? checked_color : unchecked_color
             rotation: grid.landscape ? -90 : 0
+            radius: 5
             Image {
                 id: image
                 anchors.centerIn: parent

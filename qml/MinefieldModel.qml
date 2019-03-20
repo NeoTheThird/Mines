@@ -33,9 +33,12 @@ ListModel {
     property bool started: false
     property int n_checked: 0
     property int n_mines
+    property int n_flags: 0
     property bool completed: false
+    property bool loosed: false
     property var start_time
     property var end_time
+    property double time_elapsed
     signal solved()
 
     function set_size(n_columns, n_rows, n) {
@@ -44,7 +47,9 @@ ListModel {
         started = false
         n_checked = 0
         n_mines = n
+        n_flags = 0
         completed = false
+        loosed = false
         clear()
         for(var row = 0; row < n_rows; row++) {
             for(var column = 0; column < n_columns; column++) {
@@ -71,6 +76,9 @@ ListModel {
         // Can only flag unknown cells
         if(cell.checked) { return false }
 
+        // Update n_flags
+        if(cell.flagged) { n_flags-- }
+        else { n_flags++ }
         // toggle flag status
         cell.flagged = !cell.flagged
 
@@ -109,6 +117,8 @@ ListModel {
 
         if(cell.has_mine) {
             completed = true
+            loosed = true
+            solved()
         } else {
             var n_flagged_mines = n_surrounding_flagged(cell.column, cell.row)
             if(cell.n_surrounding <= n_flagged_mines) {
@@ -177,6 +187,18 @@ ListModel {
             for(var row = 0; row < rows; row++) {
                 get_cell(column, row).n_surrounding = n_surrounding(column, row)
             }
+        }
+    }
+
+    function update_time_elapsed() {
+        if (started) {
+            time_elapsed = new Date() - start_time
+            var minutes = Math.floor(time_elapsed / 60000)
+            var seconds = ((time_elapsed % 60000) / 1000).toFixed(0)
+            return (seconds == 60 ? (minutes+1) + ":00" : (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds)
+        }
+        else {
+            return "00:00"
         }
     }
 }

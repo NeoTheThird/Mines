@@ -38,6 +38,16 @@ MainView {
 
     property string version: "1.1"
 
+    property var grid_width: 8
+    property var grid_height: 8
+    property var n_mines: 10
+
+    property var background_color: "#ffffff"
+    property var unchecked_color: "#AAAAFF"
+    property var checked_color: "#CCCCFF"
+    property var font_color: "#000000"
+    property var theme_counter: 0
+
     width: units.gu(40)
     height: units.gu(71)
 
@@ -52,7 +62,7 @@ MainView {
     Component.onCompleted: {
         get_state_database().transaction(function(t) {
             try {
-                var r = t.executeSql('SELECT use_haptic, grid_width, grid_height, n_mines FROM Settings')
+                var r = t.executeSql('SELECT use_haptic, grid_width, grid_height, n_mines, background_color, unchecked_color, checked_color, font_color FROM Settings')
                 var item = r.rows.item(0)
                 haptic_check.checked = item.use_haptic
                 for(var i = 0; i < size_selector.model.count; i++) {
@@ -62,6 +72,21 @@ MainView {
                         break
                     }
                 }
+                for(var i = 0; i < theme_selector.model.count; i++) {
+                    var s = theme_selector.model.get(i)
+                    if(s.background_color == item.background_color && s.unchecked_color == item.unchecked_color && s.checked_color == item.checked_color && s.font_color == item.font_color) {
+                        theme_selector.selectedIndex = i
+                        if (i == 0){theme_counter++}
+                        break
+                    }
+                }
+                grid_height = item.grid_height
+                grid_width = item.grid_width
+                n_mines = item.n_mines
+                background_color = item.background_color
+                unchecked_color = item.unchecked_color
+                checked_color = item.checked_color
+                font_color = item.font_color
             }
             catch(e) {
             }
@@ -72,9 +97,20 @@ MainView {
     function save_state() {
         get_state_database().transaction(function(t) {
             var grid_options = size_selector.model.get(size_selector.selectedIndex)
+            var theme_options = theme_selector.model.get(theme_selector.selectedIndex)
             // The lock field is to ensure the INSERT will always replace this row instead of adding another
-            t.executeSql("CREATE TABLE IF NOT EXISTS Settings(lock INTEGER, use_haptic BOOLEAN, grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, PRIMARY KEY (lock))")
-            t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines])
+            t.executeSql("CREATE TABLE IF NOT EXISTS Settings(lock INTEGER, use_haptic BOOLEAN, grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, background_color STRING, unchecked_color STRING, checked_color STRING, font_color STIRNG, PRIMARY KEY (lock))")
+            try {
+                t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines, theme_options.background_color, theme_options.unchecked_color, theme_options.checked_color, theme_options.font_color])
+            }
+            catch(e) {
+                //Need to update database of previous version
+                t.executeSql("ALTER TABLE Settings ADD background_color STRING")
+                t.executeSql("ALTER TABLE Settings ADD unchecked_color STRING")
+                t.executeSql("ALTER TABLE Settings ADD checked_color STRING")
+                t.executeSql("ALTER TABLE Settings ADD font_color STRING")
+                t.executeSql("INSERT OR REPLACE INTO Settings VALUES(0, ?, ?, ?, ?, ?, ?, ?, ?)", [haptic_check.checked, grid_options.grid_width, grid_options.grid_height, grid_options.n_mines, theme_options.background_color, theme_options.unchecked_color, theme_options.checked_color, theme_options.font_color])
+            }
         })
     }
 
@@ -82,6 +118,17 @@ MainView {
     {
         var grid_options = size_selector.model.get(size_selector.selectedIndex)
         minefield.set_size(grid_options.grid_width, grid_options.grid_height, grid_options.n_mines)
+        reset_timer()
+    }
+
+    function reset_timer()
+    {
+        if (!minefield.completed && !timer.running) { timer.start() }
+    }
+
+    Rectangle {
+        anchors.fill: parent
+        color: background_color
     }
 
     Component {
@@ -134,6 +181,31 @@ MainView {
         }
     }
 
+    Component {
+        id: confirm_restart_needed
+        Dialog {
+            id: d
+            // TRANSLATORS: Title for dialog shown when starting a new game while one in progress
+            title: i18n.tr("Restar needed to apply the new theme")
+            // TRANSLATORS: Content for dialog shown when starting a new game while one in progress
+            text: i18n.tr("Quit now?")
+            Button {
+                // TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
+                text: i18n.tr("Yes")
+                color: UbuntuColors.red
+                onClicked: {
+                    Qt.quit()
+                    PopupUtils.close(d)
+                }
+            }
+            Button {
+                // TRANSLATORS: Button in new game dialog that cancels new game request
+                text: i18n.tr("No")
+                onClicked: PopupUtils.close(d)
+            }
+        }
+    }
+
     PageStack {
         id: page_stack
         Component.onCompleted: push(main_page)
@@ -145,6 +217,9 @@ MainView {
                 id: main_header
                 // TRANSLATORS: Title of application
                 title: i18n.tr("Mines")
+                StyleHints {
+                    backgroundColor: background_color
+                }
                 trailingActionBar.actions: [
                     Action {
                         // TRANSLATORS: Action on main page that shows game instructions
@@ -175,11 +250,14 @@ MainView {
             MinefieldModel {
                 id: minefield
                 onSolved: {
-                    get_history_database().transaction(function(t) {
-                        t.executeSql("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
-                        var duration = minefield.end_time - minefield.start_time
-                        t.executeSql("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString(), duration])
-                    })
+                    if (minefield.loosed != true) {
+                        get_history_database().transaction(function(t) {
+                            t.executeSql("CREATE TABLE IF NOT EXISTS History(grid_width INTEGER, grid_height INTEGER, n_mines INTEGER, date TEXT, duration INTEGER)")
+                            var duration = minefield.end_time - minefield.start_time
+                            t.executeSql("INSERT INTO History VALUES(?, ?, ?, ?, ?)", [minefield.columns, minefield.rows, minefield.n_mines, minefield.start_time.toISOString(), duration])
+                        })
+                    }
+                    timer.stop()
                 }
             }
 
@@ -187,7 +265,7 @@ MainView {
                 width: parent.width
                 anchors {
                     top: main_header.bottom
-                    bottom: parent.bottom
+                    bottom: statBar.top
                 }
                 anchors.margins: units.gu(2)
                 MinefieldView {
@@ -197,6 +275,104 @@ MainView {
                     use_haptic_feedback: haptic_check.checked
                 }
             }
+
+            Rectangle {
+                id: statBar
+                width: parent.width
+                height: units.gu(8)
+                anchors.bottom: parent.bottom
+
+                Rectangle {
+                    height: parent.height
+                    width: parent.width/2
+                    color: background_color
+                    anchors {
+                        left: parent.left
+                    }
+
+                    Row {
+                        height: parent.height
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        Image {
+                            id: time_icon
+                            anchors {
+                                verticalCenter: parent.verticalCenter
+                                margins: units.gu(2)
+                            }
+                            source: "../assets/time.svg"
+                        }
+                        Rectangle{
+                            width: units.gu(8)
+                            height: parent.height
+                            color: background_color
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            Item {
+                                Component.onCompleted: reset_timer()
+                                Timer {
+                                    id: timer
+                                    interval: 500; running: false; repeat: true
+                                    onTriggered: time.text = minefield.update_time_elapsed()
+                                }
+                            }
+                            Text {
+                                id: time
+                                color: font_color
+                                anchors {
+                                    verticalCenter: parent.verticalCenter
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    height: parent.height
+                    width: parent.width/2
+                    color: background_color
+                    anchors {
+                        right: parent.right
+                    }
+
+                    Row {
+                        height: parent.height
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            verticalCenter: parent.verticalCenter
+                        }
+
+                        Image {
+                            id: mine_icon
+                            anchors {
+                                verticalCenter: parent.verticalCenter
+                                margins: units.gu(2)
+                            }
+                            source: "../assets/mine.svg"
+                        }
+
+                        Rectangle{
+                            width: units.gu(8)
+                            height: parent.height
+                            color: background_color
+                            anchors.verticalCenter: parent.verticalCenter
+
+                            Text {
+                                color: font_color
+                                anchors {
+                                    verticalCenter: parent.verticalCenter
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                                text: minefield.n_flags + "/" + minefield.n_mines
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         Page {
@@ -204,6 +380,9 @@ MainView {
             visible: false
             header : PageHeader {
                 id: how_to_play_header
+                StyleHints {
+                    backgroundColor: background_color
+                }
                 // TRANSLATORS: Title of page with game instructions
                 title: i18n.tr("How to Play")
                 flickable: how_to_play_flick
@@ -317,6 +496,9 @@ MainView {
             visible: false
             header: PageHeader {
                 id: scores_header
+                StyleHints {
+                    backgroundColor: background_color
+                }
                 // TRANSLATORS: Title of page showing high scores
                 title: i18n.tr("High Scores")
                 Action {
@@ -333,10 +515,12 @@ MainView {
             visible: false
             header: PageHeader {
                 id: settings_header
+                StyleHints {
+                    backgroundColor: background_color
+                }
                 // TRANSLATORS: Title of page showing settings
                 title: i18n.tr("Settings")
             }
-
 
             Column {
                 width: parent.width
@@ -364,6 +548,9 @@ MainView {
                             case "small":
                                 // TRANSLATORS: Setting name for small minefield
                                 return i18n.tr("Small")
+                            case "medium":
+                                // TRANSLATORS: Setting name for medium minefield
+                                return i18n.tr("Medium")
                             case "large":
                                 // TRANSLATORS: Setting name for large minefield
                                 return i18n.tr("Large")
@@ -380,6 +567,34 @@ MainView {
                         reset_field()
                     }
                 }
+                ListItem.ItemSelector {
+                    id: theme_selector
+                    // TRANSLATORS: Label above setting to choose the minefield size
+                    text: i18n.tr("Theme:")
+                    model: theme_model
+                    delegate: OptionSelectorDelegate {
+                        text: {
+                            switch(name) {
+                            case "classic":
+                                // TRANSLATORS: Setting name for small minefield
+                                return i18n.tr("Classic")
+                            case "dark":
+                                // TRANSLATORS: Setting name for medium minefield
+                                return i18n.tr("Dark")
+                            case "ubuntu":
+                                // TRANSLATORS: Setting name for large minefield
+                                return i18n.tr("Ubuntu")
+                            default:
+                                return ""
+                            }
+                        }
+                    }
+                    onSelectedIndexChanged: {
+                        save_state()
+                        if(theme_counter > 0) {PopupUtils.open(confirm_restart_needed)}
+                        else {theme_counter++}
+                    }
+                }
             }
 
             ListModel {
@@ -391,10 +606,40 @@ MainView {
                     n_mines: 10
                 }
                 ListElement {
-                    name: "large"
+                    name: "medium"
                     grid_width: 10
                     grid_height: 16
                     n_mines: 25
+                }
+                ListElement {
+                    name: "large"
+                    grid_width: 18
+                    grid_height: 24
+                    n_mines: 99
+                }
+            }
+            ListModel {
+                id: theme_model
+                ListElement {
+                    name: "classic"
+                    background_color: "#ffffff"
+                    unchecked_color: "#AAAAFF"
+                    checked_color: "#CCCCFF"
+                    font_color: "#000000"
+                }
+                ListElement {
+                    name: "dark"
+                    background_color: "#aba79e"
+                    unchecked_color: "#c3beba"
+                    checked_color: "#eee4d8"
+                    font_color: "#000000"
+                }
+                ListElement {
+                    name: "ubuntu"
+                    background_color: "#ffffff"
+                    unchecked_color: "#babdb6"
+                    checked_color: "#dededc"
+                    font_color: "#6b6561"
                 }
             }
         }
