@@ -7,87 +7,89 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mines.neothethird\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-17 21:26+0200\n"
-"PO-Revision-Date: 2017-09-18 16:41+0200\n"
+"POT-Creation-Date: 2018-09-23 21:06+0000\n"
+"PO-Revision-Date: 2019-09-04 15:54+0200\n"
 "Last-Translator: advocatux <advocatux@airpost.net>\n"
-"Language-Team: UBports Spanish Team\n2"
+"Language-Team: UBports Spanish Team\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: handmade for you\n"
+"Language: es\n"
 
 #. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:95
+#: ../qml/Main.qml:92
 msgid "Game in progress"
 msgstr "Partida en curso"
 
 #. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
-#: ../qml/Main.qml:97
+#: ../qml/Main.qml:94
 msgid "Are you sure you want to restart this game?"
 msgstr "¿Confirma que quiere reiniciar esta partida?"
 
 #. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
-#: ../qml/Main.qml:100
+#: ../qml/Main.qml:97
 msgid "Restart game"
 msgstr "Reiniciar partida"
 
 #. TRANSLATORS: Button in new game dialog that cancels new game request
-#: ../qml/Main.qml:109
+#: ../qml/Main.qml:106
 msgid "Continue current game"
 msgstr "Continuar partida actual"
 
 #. TRANSLATORS: Title for dialog confirming if scores should be cleared
 #. TRANSLATORS: Button in clear scores dialog that clears scores
 #. TRANSLATORS: Action in high scores page that clears scores
-#: ../qml/Main.qml:120 ../qml/Main.qml:125 ../qml/Main.qml:315
+#: ../qml/Main.qml:117 ../qml/Main.qml:122 ../qml/Main.qml:324
 msgid "Clear scores"
 msgstr "Borrar puntuaciones"
 
 #. TRANSLATORS: Content for dialog confirming if scores should be cleared
-#: ../qml/Main.qml:122
+#: ../qml/Main.qml:119
 msgid "Existing scores will be deleted. This cannot be undone."
 msgstr "Se eliminarán las puntuaciones existentes. Esto no se puede deshacer."
 
 #. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
-#: ../qml/Main.qml:134
+#: ../qml/Main.qml:131
 msgid "Keep existing scores"
 msgstr "Mantener puntuaciones existentes"
 
 #. TRANSLATORS: Title of application
-#: ../qml/Main.qml:148 ../qml/Main.qml:224
+#: ../qml/Main.qml:147 ../qml/Main.qml:234
 msgid "Mines"
 msgstr "Minas"
 
 #. TRANSLATORS: Action on main page that shows game instructions
 #. TRANSLATORS: Title of page with game instructions
-#: ../qml/Main.qml:153 ../qml/Main.qml:203
+#: ../qml/Main.qml:151 ../qml/Main.qml:208
 msgid "How to Play"
 msgstr "Cómo jugar"
 
 #. TRANSLATORS: Action on main page that shows settings dialog
 #. TRANSLATORS: Title of page showing settings
-#: ../qml/Main.qml:159 ../qml/Main.qml:326
+#: ../qml/Main.qml:157 ../qml/Main.qml:337
 msgid "Settings"
 msgstr "Configuración"
 
 #. TRANSLATORS: Action on main page that starts a new game
-#: ../qml/Main.qml:165
+#: ../qml/Main.qml:163
 msgid "New Game"
 msgstr "Partida nueva"
 
-#: ../qml/Main.qml:242
+#: ../qml/Main.qml:252
 msgid "Version: "
 msgstr "Versión: "
 
 #. TRANSLATORS: Short description
-#: ../qml/Main.qml:251
+#: ../qml/Main.qml:261
 msgid ""
 "Mines is a puzzle game where the goal is to find the mines in a minefield."
-msgstr "Minas es un rompecabezas donde tiene que encontrar las minas en un campo minado."
+msgstr ""
+"Minas es un rompecabezas donde tiene que encontrar las minas en un campo "
+"minado."
 
 #. TRANSLATORS: Game instructions
-#: ../qml/Main.qml:261
+#: ../qml/Main.qml:271
 msgid ""
 "The minefield is divided into a grid of squares. Touch a square to check if "
 "there is a mine there. If no mine is present the square will show the number "
@@ -95,14 +97,15 @@ msgid ""
 "a mine to check next. If you hit a mine it explodes and the game is over. "
 "You can flag where a mine is by touching and holding that square. Have fun!"
 msgstr ""
-"El campo minado está dividido en una rejilla de cuadrados. Toque un cuadrado para ver si "
-"hay una mina ahí. Si no hay una mina el cuadrado mostrará el número "
-"de minas rodeándolo. Use la lógica para determinar un cuadrado que no pueda tener "
-"una mina y tóquelo. Si acierta una mina, explota y la partida termina. "
-"Puede marcar con una bandera donde está una mina pulsando y manteniendo pulsado ese cuadrado. ¡Diviértase!"
+"El campo minado está dividido en una rejilla de cuadrados. Toque un cuadrado "
+"para ver si hay una mina ahí. Si no hay una mina el cuadrado mostrará el "
+"número de minas rodeándolo. Use la lógica para determinar un cuadrado que no "
+"pueda tener una mina y tóquelo. Si acierta una mina, explota y la partida "
+"termina. Puede marcar con una bandera donde está una mina pulsando y "
+"manteniendo pulsado ese cuadrado. ¡Diviértase!"
 
 #. TRANSLATORS: GPL notice
-#: ../qml/Main.qml:271
+#: ../qml/Main.qml:281
 msgid ""
 "This program is free software: you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -113,56 +116,61 @@ msgid ""
 "href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
 "License</a> for more details."
 msgstr ""
+"Este programa es software libre: puede redistribuirlo y/o modificarlos según "
+"los términos de la licencia pública general de GNU publicada por la Free "
+"Software Foundation (fundación de software libre), tanto la versión 3 de la "
+"licencia como (a su opción) cualquier versión posterior. Este programa se "
+"distribuye con la esperanza de que será útil pero SIN NINGUNA GARANTÍA; ni "
+"siquiera la garantía implícita de COMERCIALIZACIÓN o IDONEIDAD PARA UN FIN "
+"ESPECÍFICO. Vea la <a href='https://www.gnu.org/licenses/gpl-3.0.en."
+"html'>licencia pública general de GNU</a> para más detalles."
 
-#: ../qml/Main.qml:280
+#: ../qml/Main.qml:290
 msgid "SOURCE"
 msgstr "FUENTE"
 
-#: ../qml/Main.qml:280
+#: ../qml/Main.qml:290
 msgid "ISSUES"
 msgstr "PROBLEMAS"
 
-#: ../qml/Main.qml:280
+#: ../qml/Main.qml:290
 msgid "DONATE"
 msgstr "DONAR"
 
-#: ../qml/Main.qml:290
+#: ../qml/Main.qml:300
 msgid "Copyright (c) 2015 Robert Ancell"
-msgstr ""
+msgstr "Copyright (c) 2015 Robert Ancell"
 
-#: ../qml/Main.qml:299
+#: ../qml/Main.qml:309
 msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
-msgstr ""
+msgstr "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
 
 #. TRANSLATORS: Title of page showing high scores
-#: ../qml/Main.qml:309
+#: ../qml/Main.qml:321
 msgid "High Scores"
 msgstr "Mejores puntuaciones"
 
 #. TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
-#: ../qml/Main.qml:332
+#: ../qml/Main.qml:349
 msgid "Vibrate when placing flags"
 msgstr "Vibrar al colocar banderas"
 
 #. TRANSLATORS: Label above setting to choose the minefield size
-#: ../qml/Main.qml:342
+#: ../qml/Main.qml:359
 msgid "Minefield size:"
 msgstr "Tamaño del campo minado:"
 
 #. TRANSLATORS: Setting name for small minefield
-#: ../qml/Main.qml:349
+#: ../qml/Main.qml:366
 msgid "Small"
 msgstr "Pequeño"
 
 #. TRANSLATORS: Setting name for large minefield
-#: ../qml/Main.qml:352
+#: ../qml/Main.qml:369
 msgid "Large"
 msgstr "Grande"
 
 #. TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
-#: ../qml/Main.qml:358
+#: ../qml/Main.qml:375
 msgid "%width%×%height%, %nmines% mines"
 msgstr "%width%×%height%, %nmines% minas"
-
-#~ msgid "mines,minesweeper,mine,puzzle"
-#~ msgstr "minas, buscaminas, mina, rompecabezas"
