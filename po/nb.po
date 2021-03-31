@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the mines.neothethird package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: mines.neothethird\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-23 21:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: NORWEGIAN <LL@li.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
+#: ../qml/Main.qml:92
+msgid "Game in progress"
+msgstr "Spillet pågår"
+
+#. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
+#: ../qml/Main.qml:94
+msgid "Are you sure you want to restart this game?"
+msgstr "Er du sikker på at du vil starte dette spillet på nytt?"
+
+#. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
+#: ../qml/Main.qml:97
+msgid "Restart game"
+msgstr "Start spillet på nytt"
+
+#. TRANSLATORS: Button in new game dialog that cancels new game request
+#: ../qml/Main.qml:106
+msgid "Continue current game"
+msgstr "Fortsett det nåværende spillet"
+
+#. TRANSLATORS: Title for dialog confirming if scores should be cleared
+#. TRANSLATORS: Button in clear scores dialog that clears scores
+#. TRANSLATORS: Action in high scores page that clears scores
+#: ../qml/Main.qml:117 ../qml/Main.qml:122 ../qml/Main.qml:324
+msgid "Clear scores"
+msgstr "Tøm poeng"
+
+#. TRANSLATORS: Content for dialog confirming if scores should be cleared
+#: ../qml/Main.qml:119
+msgid "Existing scores will be deleted. This cannot be undone."
+msgstr "Eksiterende poeng vil bli slettet. Dette kan ikke angres."
+
+#. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
+#: ../qml/Main.qml:131
+msgid "Keep existing scores"
+msgstr "Behold eksisterende poeng"
+
+#. TRANSLATORS: Title of application
+#: ../qml/Main.qml:147 ../qml/Main.qml:234
+msgid "Mines"
+msgstr "Minesveiper"
+
+#. TRANSLATORS: Action on main page that shows game instructions
+#. TRANSLATORS: Title of page with game instructions
+#: ../qml/Main.qml:151 ../qml/Main.qml:208
+msgid "How to Play"
+msgstr "Hvordan spille"
+
+#. TRANSLATORS: Action on main page that shows settings dialog
+#. TRANSLATORS: Title of page showing settings
+#: ../qml/Main.qml:157 ../qml/Main.qml:337
+msgid "Settings"
+msgstr "Innstillinger"
+
+#. TRANSLATORS: Action on main page that starts a new game
+#: ../qml/Main.qml:163
+msgid "New Game"
+msgstr "Nytt spill"
+
+#: ../qml/Main.qml:252
+msgid "Version: "
+msgstr "Versjon: "
+
+#. TRANSLATORS: Short description
+#: ../qml/Main.qml:261
+msgid ""
+"Mines is a puzzle game where the goal is to find the mines in a minefield."
+msgstr ""
+"Minesveiper er et puslespill der målet er å finne minene i et minefelt."
+
+#. TRANSLATORS: Game instructions
+#: ../qml/Main.qml:271
+msgid ""
+"The minefield is divided into a grid of squares. Touch a square to check if "
+"there is a mine there. If no mine is present the square will show the number "
+"of mines surrounding it. Use logic to determine a square that cannot contain "
+"a mine to check next. If you hit a mine it explodes and the game is over. "
+"You can flag where a mine is by touching and holding that square. Have fun!"
+msgstr ""
+"Minefeltet er delt inn i et rutenett. Trykk på en firkant for å sjekke om "
+"det er en gruve der. Hvis ingen gruver er til stede, vil torget vise tallet "
+"av gruver som omgir den. Bruk logikk for å bestemme et kvadrat som ikke kan inneholde "
+"en gruve å sjekke neste. Hvis du treffer en gruve, eksploderer den og spillet er over. "
+"Du kan flagge hvor en gruve er ved å berøre og holde den firkanten. Ha det gøy!"
+
+#. TRANSLATORS: GPL notice
+#: ../qml/Main.qml:281
+msgid ""
+"This program is free software: you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation, either version 3 of the License, or (at your option) "
+"any later version. This program is distributed in the hope that it will be "
+"useful, but WITHOUT ANY WARRANTY; without even the implied warranty of "
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a "
+"href='https://www.gnu.org/licenses/gpl-3.0.en.html'>GNU General Public "
+"License</a> for more details."
+msgstr ""
+"Dette programmet er gratis programvare: du kan distribuere det og / eller "
+"endre det under vilkårene i GNU General Public License som publisert av Free "
+"Software Foundation, enten versjon 3 av lisensen, eller (etter eget valg) "
+"en hvilken som helst senere versjon. Dette programmet distribueres i håp om "
+"at det blir nyttig, men UTEN GARANTI; uten den underforståtte garantien til "
+"SALGSMERKELIGHET eller FITNESS FOR ET BESTEMT FORMÅL. Se <a "
+"href = 'https: //www.gnu.org/licenses/gpl-3.0.en.html'> GNU General Public "
+"Lisens</a> for mer informasjon."
+
+#: ../qml/Main.qml:290
+msgid "SOURCE"
+msgstr "KILDE"
+
+#: ../qml/Main.qml:290
+msgid "ISSUES"
+msgstr "FEIL"
+
+#: ../qml/Main.qml:290
+msgid "DONATE"
+msgstr "DONER"
+
+#: ../qml/Main.qml:300
+msgid "Copyright (c) 2015 Robert Ancell"
+msgstr "Opphavsrett (c) 2015 Robert Ancell"
+
+#: ../qml/Main.qml:309
+msgid "Copyright (c) 2017 Jan Sprinz <neo@neothethird.de>"
+msgstr "Opphavsrett (c) 2017 Jan Sprinz <neo@neothethird.de>"
+
+#. TRANSLATORS: Title of page showing high scores
+#: ../qml/Main.qml:321
+msgid "High Scores"
+msgstr "Rekorder"
+
+#. TRANSLATORS: Label beside checkbox setting for controlling vibrations when placing flags
+#: ../qml/Main.qml:349
+msgid "Vibrate when placing flags"
+msgstr "Vibrer når du setter flagg"
+
+#. TRANSLATORS: Label above setting to choose the minefield size
+#: ../qml/Main.qml:359
+msgid "Minefield size:"
+msgstr "Minefelt størrelse:"
+
+#. TRANSLATORS: Setting name for small minefield
+#: ../qml/Main.qml:366
+msgid "Small"
+msgstr "Liten"
+
+#. TRANSLATORS: Setting name for large minefield
+#: ../qml/Main.qml:369
+msgid "Large"
+msgstr "Stor"
+
+#. TRANSLATORS: Description format for minefield size, %width%, %height% and %nmines% is replaced with the field width, height and number of mines
+#: ../qml/Main.qml:375
+msgid "%width%×%height%, %nmines% mines"
+msgstr "%width%×%height%, %nmines% mines"
